@@ -3,3 +3,5 @@
 ### in acceptance tests, this abstracts the urls so that you will not        ###
 ### need to change every test when switching environments for example.       ###
 ################################################################################
+
+$CHARGES_URL = (ENV['CHARGES_URL'] || 'http://0.0.0.0:5000')
