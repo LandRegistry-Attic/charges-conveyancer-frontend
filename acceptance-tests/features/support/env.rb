@@ -3,5 +3,3 @@
 ### in acceptance tests, this abstracts the urls so that you will not        ###
 ### need to change every test when switching environments for example.       ###
 ################################################################################
-
-$HELLOWORLD_DOMAIN = (ENV['HELLOWORLD_DOMAIN'] || 'http://localhost:5000')
