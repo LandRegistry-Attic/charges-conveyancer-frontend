@@ -9,11 +9,11 @@ def get_case_client():
 
 def get_cases():
     def case_from_json(case):
-        return Case(case.get('deed_id'),
-                    case.get('clients'),
-                    case.get('task'),
-                    case.get('status'),
-                    case.get('last_updated'))
+        return Case(case['reference'],
+                    case['clients'],
+                    case['task'],
+                    case['status'],
+                    case['last_updated'])
 
-    cases_json = get_case_client().get_cases()
+    cases_json = get_case_client().get_cases().json()
     return [case_from_json(case) for case in cases_json]
