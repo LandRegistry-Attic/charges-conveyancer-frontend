@@ -1,6 +1,6 @@
-# Borrower Frontend
+# Conveyancer Frontend
 
-The Borrower Frontend provides a website for Borrower to view and sign their
+The Conveyancer Frontend provides a website for Conveyancer to view and sign their
 mortgage deeds online.
 
 ## Testing

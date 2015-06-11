@@ -21,5 +21,6 @@ def with_client (test):
 def setUpApp(self):
     app, manager = create_app()
     app.config['TESTING'] = True
+    app.config['CASE_CLIENT'] = 'tests.mock.case_api_mock_client.CaseApiMockClient'
     self.app = app
     self.manager = manager

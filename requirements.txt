@@ -4,3 +4,5 @@ Flask-Script
 libsass
 Flask-Assets
 govuk-template
+requests
+
