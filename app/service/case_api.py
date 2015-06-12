@@ -1,8 +1,10 @@
 from pydoc import locate
 from flask import current_app
 from app.service.model import Case
+from functools import lru_cache
 
 
+@lru_cache(maxsize=None)
 def get_case_client():
     return locate(current_app.config['CASE_CLIENT'])
 
