@@ -1,6 +1,6 @@
 class Case:
-    def __init__(self, deed_id, clients, task, status, last_updated):
-        self.deed_id = deed_id
+    def __init__(self, reference, clients, task, status, last_updated):
+        self.reference = reference
         self.clients = clients
         self.status = status
         self.task = task
