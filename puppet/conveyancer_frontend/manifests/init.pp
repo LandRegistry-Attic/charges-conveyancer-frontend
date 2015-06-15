@@ -1,10 +1,10 @@
-# Install and configure the Govuk Flask Skeleton
-class govuk_flask_skeleton (
-    $port = '9030',
+# Install and configure the Conveyancer Frontend
+class conveyancer_frontend (
+    $port = '9040',
     $host = '0.0.0.0',
     $branch_or_revision = 'master',
-    $source = 'git://github.com/LandRegistry/govuk-flask-skeleton',
-    $domain = 'govuk_flask_skeleton.*',
+    $source = 'git://github.com/LandRegistry/charges-conveyancer-frontend',
+    $domain = 'conveyancer-frontend.*',
     $owner = 'vagrant',
     $group = 'vagrant'
 ) {
