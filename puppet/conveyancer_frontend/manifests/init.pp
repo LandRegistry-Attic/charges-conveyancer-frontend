@@ -51,15 +51,16 @@ class conveyancer_frontend (
     content => template("${module_name}/conveyancer_frontend_service.erb"),
     notify  => [Exec['systemctl-daemon-reload'], Service['conveyancer_frontend']],
   }
-  service { 'conveyancer_frontend':
+  service { $module_name:
     ensure   => 'running',
     enable   => true,
     provider => 'systemd',
     require  => [
-      Vcsrepo['/opt/conveyancer-frontend'],
-      File['/opt/conveyancer-frontend/bin/run.sh'],
-      File['/etc/init.d/conveyancer_frontend'],
-      File['/etc/systemd/system/conveyancer_frontend.service']
+      Vcsrepo["/opt/${module_name}"],
+      File["/opt/${module_name}/bin/run.sh"],
+      File["/etc/init.d/${module_name}"],
+      File["/etc/systemd/system/${module_name}.service"],
+      File["/var/run/${module_name}"],
     ],
   }
 }
