@@ -10,25 +10,30 @@ class conveyancer_frontend (
 ) {
   require ::standard_env
 
-  vcsrepo { '/opt/conveyancer-frontend':
+  vcsrepo { "/opt/${module_name}":
     ensure   => latest,
     provider => git,
-    source   => 'git://github.com/LandRegistry/charges-conveyancer-frontend',
+    source   => $source,
     revision => $branch_or_revision,
     owner    => $owner,
     group    => $group,
-    notify   => Service['conveyancer_frontend'],
+    notify   => Service[$module_name],
   }
-  file { '/opt/conveyancer-frontend/bin/run.sh':
+  file { "/opt/${module_name}/bin/run.sh":
     ensure  => 'file',
     mode    => '0755',
     owner   => $owner,
     group   => $group,
-    source  => "puppet:///modules/${module_name}/run.sh",
-    require => Vcsrepo['/opt/conveyancer-frontend'],
-    notify  => Service['conveyancer_frontend'],
+    content => template("${module_name}/run.sh.erb"),
+    require => Vcsrepo["/opt/${module_name}"],
+    notify  => Service[$module_name],
   }
-  file { '/etc/nginx/conf.d/conveyancer_frontend.conf':
+  file { "/var/run/${module_name}":
+    ensure => 'directory',
+    owner  => $owner,
+    group  => $group,
+  }
+  file { "/etc/nginx/conf.d/${module_name}.conf":
     ensure  => 'file',
     mode    => '0755',
     content => template("${module_name}/nginx.conf.erb"),
@@ -36,20 +41,20 @@ class conveyancer_frontend (
     group   => $group,
     notify  => Service['nginx'],
   }
-  file { '/etc/init.d/conveyancer_frontend':
-    ensure => 'file',
-    mode   => '0755',
-    owner  => $owner,
-    group  => $group,
-    source => "puppet:///modules/${module_name}/conveyancer_frontend.initd",
-  }
-  file { '/etc/systemd/system/conveyancer_frontend.service':
+  file { "/etc/init.d/${module_name}":
     ensure  => 'file',
     mode    => '0755',
     owner   => $owner,
     group   => $group,
-    content => template("${module_name}/conveyancer_frontend_service.erb"),
-    notify  => [Exec['systemctl-daemon-reload'], Service['conveyancer_frontend']],
+    content => template("${module_name}/service.initd.erb"),
+  }
+  file { "/etc/systemd/system/${module_name}.service":
+    ensure  => 'file',
+    mode    => '0755',
+    owner   => $owner,
+    group   => $group,
+    content => template("${module_name}/service.systemd.erb"),
+    notify  => [Exec['systemctl-daemon-reload'], Service[$module_name]],
   }
   service { $module_name:
     ensure   => 'running',
