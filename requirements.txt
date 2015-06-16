@@ -5,3 +5,4 @@ libsass
 Flask-Assets
 govuk-template
 gunicorn
+requests

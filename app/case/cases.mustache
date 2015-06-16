@@ -1,0 +1,30 @@
+<table class="casework-dashboard">
+    <thead>
+    <tr>
+        <th scope="col">Reference</th>
+        <th scope="col">Client</th>
+        <th scope="col">Task</th>
+        <th scope="col">Status</th>
+        <th scope="col">Last updated</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#cases}}
+        <tr class="summary">
+            <td>{{reference}}</td>
+            <td>
+                <ul>
+                    {{#clients}}
+                        <li>
+                            {{.}}
+                        </li>
+                    {{/clients}}
+                </ul>
+            </td>
+            <td>{{task}}</td>
+            <td>{{status}}</td>
+            <td>{{last_updated}}</td>
+        </tr>
+    {{/cases}}
+    </tbody>
+</table>
