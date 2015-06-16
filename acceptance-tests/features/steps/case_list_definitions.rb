@@ -3,24 +3,24 @@ Given(/^I navigate to the case list page$/) do
 end
 
 Then(/^the case reference number is displayed$/) do
-  page.find(:css, '.casework-dashboard tr', :text => 'FGHIK987')
+  page.find(:css, '.casework-dashboard tr', :text => '2000')
 end
 
 Then(/^the client is displayed$/) do
-  find_data_in_table_row('.casework-dashboard', 'FGHIK987', 'David Stephens')
-  find_data_in_table_row('.casework-dashboard', 'FGHIK987', 'Maria Stephens')
+  find_data_in_table_row('.casework-dashboard', '2000', 'Andrew Smith')
+  find_data_in_table_row('.casework-dashboard', '2000', 'Mary Young')
 end
 
 Then(/^the task is displayed$/) do
-  find_data_in_table_row('.casework-dashboard', 'FGHIK987', 'Remortgage')
+  find_data_in_table_row('.casework-dashboard', '2000', 'Remortgage')
 end
 
 Then(/^the status is displayed$/) do
-  find_data_in_table_row('.casework-dashboard', 'FGHIK987', 'Mortgage deed created')
+  find_data_in_table_row('.casework-dashboard', '2000', 'Draft')
 end
 
 Then(/^the last updated date is displayed$/) do
-  find_data_in_table_row('.casework-dashboard', 'FGHIK987', '2 March 2015')
+  find_data_in_table_row('.casework-dashboard', '2000', '25.05.2013')
 end
 
 Then(/^the case list is sorted by last updated date$/) do
