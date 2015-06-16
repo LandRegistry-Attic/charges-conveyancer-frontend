@@ -24,4 +24,4 @@ def setUpApp(self):
     self.app = manager.app
     self.manager = manager
     self.app.config['TESTING'] = True
-    self.config['CASE_CLIENT'] = 'tests.mock.case_api_mock_client.CaseApiMockClient'
+    self.app.config['CASE_CLIENT'] = 'tests.mock.case_api_mock_client.CaseApiMockClient'
