@@ -26,4 +26,6 @@ test_pass=$?
 coverage xml
 coverage -rm
 
-exit $(($test_pass + $rubocop))
+e_code=$(($test_pass + $rubocop))
+
+exit $e_code
