@@ -8,5 +8,5 @@ def register_routes(blueprint):
     def case_list():
         cases = case_api.get_cases()
         key = lambda case: datetime.strptime(case.last_updated, '%d.%m.%Y')
-        cases_sorted = sorted(cases, key=key)
+        cases_sorted = sorted(cases, key=key, reverse=True)
         return views.Cases(cases_sorted).render()
