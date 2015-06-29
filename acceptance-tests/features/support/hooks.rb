@@ -14,6 +14,10 @@ end
 After do |scenario|
   ### If an acceptance test scenario has failed then take a screenshot to
   ### record where in the scenario it occured.
-
   save_screenshot("sshot-#{Time.new.to_i}.png", full: true) if scenario.failed?
+
+  ### Delete all test data that has been created for this scenario
+  $TEST_DATA.each { |data|
+    delete_case_data(data['id'])
+  }
 end
