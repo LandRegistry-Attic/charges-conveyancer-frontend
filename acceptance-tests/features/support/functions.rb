@@ -23,3 +23,13 @@ def create_case_data(case_file)
     raise "Failed to create case with json #{case_json}. Got response #{response.code} - #{response.body}"
   end
 end
+
+def delete_case_data(case_id)
+  ### Setup a DELETE request to the case API to delete case with supplied id
+  url = URI.parse($CASE_API_URL + "/case/" + case_id.to_s)
+  connection = Net::HTTP.new(url.host, url.port)
+  request = Net::HTTP::Delete.new(url)
+  ### Execute the created request against the case API and return the response
+  response = connection.request(request)
+  response.body
+end
