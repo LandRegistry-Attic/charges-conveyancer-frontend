@@ -1,5 +1,5 @@
 Given(/^I navigate to the case list page$/) do
-  visit("#{$CHARGES_URL}/cases")
+  visit("#{$CONVEYANCER_FRONTEND_URL}/cases")
 end
 
 Then(/^the case reference number is displayed$/) do
