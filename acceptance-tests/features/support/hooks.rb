@@ -7,6 +7,7 @@
 
 ### Code that should be executed before the acceptance tests have run.
 Before do
+  $TEST_DATA = []
 end
 
 ### Code that should be executed once all of the acceptance tests have run.

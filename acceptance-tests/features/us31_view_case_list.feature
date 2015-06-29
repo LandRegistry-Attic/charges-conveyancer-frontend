@@ -15,7 +15,8 @@ Acceptance Criteria:
     - List of cases will be sorted by last updated date (newest first)
 
 Background:
-    Given I navigate to the case list page
+    Given I have created a case
+    And I navigate to the case list page
 
 Scenario: Case list is displayed
     Then the case reference number is displayed

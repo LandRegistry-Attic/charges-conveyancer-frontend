@@ -1,3 +1,8 @@
+Given(/^I have created a case$/) do
+  @case = create_case_data('new_case')
+  $TEST_DATA.push(@case)
+end
+
 Given(/^I navigate to the case list page$/) do
   visit("#{$CONVEYANCER_FRONTEND_URL}/cases")
 end
