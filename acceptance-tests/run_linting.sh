@@ -1,3 +1,4 @@
+#!/bin/bash -l
 #################################################################################################
 ### This shell script is used to run style guide checkers on code in the acceptance-tests     ###
 ### folder such as Rubocop.                                                                   ###
