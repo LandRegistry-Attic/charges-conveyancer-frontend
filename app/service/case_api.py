@@ -1,10 +1,8 @@
-from functools import lru_cache
 from flask import current_app
 import requests
 from app.case.model import case_from_json
 
 
-@lru_cache(maxsize=None)
 def get_case_client():
     case_api_base_host = current_app.config['CASE_API_BASE_HOST']
     return requests.get(case_api_base_host + '/case').json()
