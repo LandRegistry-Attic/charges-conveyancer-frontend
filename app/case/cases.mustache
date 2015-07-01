@@ -1,4 +1,4 @@
-<table class="casework-dashboard">
+<table id="casework-dashboard">
     <thead>
     <tr>
         <th scope="col">Reference</th>
@@ -23,7 +23,7 @@
             </td>
             <td>{{task}}</td>
             <td>{{status}}</td>
-            <td>{{last_updated}}</td>
+            <td>{{get_readable_updated_date}}</td>
         </tr>
     {{/cases}}
     </tbody>

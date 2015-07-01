@@ -6,7 +6,8 @@ class conveyancer_frontend (
     $source = 'git://github.com/LandRegistry/charges-conveyancer-frontend',
     $domain = 'conveyancer-frontend.*',
     $owner = 'vagrant',
-    $group = 'vagrant'
+    $group = 'vagrant',
+    $case_api_base_host = 'http://caseapi.lrdigitalmortgage-int.com:20100'
 ) {
   require ::standard_env
 

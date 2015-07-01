@@ -19,6 +19,8 @@ git submodule update --init
 
 rubocop=$?
 
+export CASE_API_BASE_HOST="http://caseapi.lrdigitalmortgage-int.com:20100"
+
 coverage run --source=app tests.py --xml
 
 test_pass=$?

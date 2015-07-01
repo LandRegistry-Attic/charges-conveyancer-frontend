@@ -1,21 +1,13 @@
-from pydoc import locate
 from flask import current_app
-from app.service.model import Case
-from functools import lru_cache
+import requests
+from app.case.model import case_from_json
 
 
-@lru_cache(maxsize=None)
 def get_case_client():
-    return locate(current_app.config['CASE_CLIENT'])
+    case_api_base_host = current_app.config['CASE_API_BASE_HOST']
+    return requests.get(case_api_base_host + '/case').json()
 
 
 def get_cases():
-    def case_from_json(case):
-        return Case(case['reference'],
-                    case['clients'],
-                    case['task'],
-                    case['status'],
-                    case['last_updated'])
-
-    cases_json = get_case_client().get_cases().json()
+    cases_json = get_case_client()
     return [case_from_json(case) for case in cases_json]
