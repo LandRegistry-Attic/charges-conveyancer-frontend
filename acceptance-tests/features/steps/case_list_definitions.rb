@@ -71,9 +71,8 @@ Then(/^check if it has the rows I added$/) do
       DateTime.parse(json_ruby_object['last_updated'].to_s)
       .strftime('%d/%m/%Y')
 
-    is_present = find_data_in_table_row($table_row_selector,
-                                        json_ruby_object['status'].to_s,
-                                        json_ruby_object['last_updated'].to_s)
+    is_present =  page.has_content?(json_ruby_object['status'].to_s) &&
+                  page.has_content?(json_ruby_object['last_updated'].to_s)
 
     if is_present == true
       items_found += 1
