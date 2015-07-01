@@ -6,7 +6,7 @@ def register_routes(blueprint):
     @blueprint.route('/cases')
     def case_list():
         cases = case_api.get_cases()
-        key = lambda case: case.last_updated.strftime('%d.%m.%Y')
+        key = lambda case: case.last_updated
 
         cases_sorted = sorted(cases, key=key, reverse=True)
 
