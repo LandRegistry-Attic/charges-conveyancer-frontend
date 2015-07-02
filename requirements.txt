@@ -7,3 +7,4 @@ govuk-template
 gunicorn
 requests
 python-dateutil
+flake8
