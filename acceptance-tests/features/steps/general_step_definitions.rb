@@ -1,11 +1,11 @@
 Given(/^I navigate to the conveyancer frontend "([^"]*)" page$/) do |path|
-  pending # Write code here that turns the phrase above into concrete actions
+  visit($CHARGES_URL + path)
 end
 
 When(/^I click on the "([^"]*)" button$/) do |button_name|
-  pending # Write code here that turns the phrase above into concrete actions
+  click_button(button_name)
 end
 
 Then(/^the "([^"]*)" page is displayed$/) do |page_title|
-  pending # Write code here that turns the phrase above into concrete actions
+  page.has_content?(page_title)
 end

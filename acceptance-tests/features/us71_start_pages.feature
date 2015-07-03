@@ -11,5 +11,5 @@ Acceptance Criteria:
 
 Scenario: Start Page on Conveyancer Frontend
   Given I navigate to the conveyancer frontend "/" page
-  When I click on the "start" button
-  Then the "case list" page is displayed
+  When I click on the "Start now" button
+  Then the "Case list" page is displayed
