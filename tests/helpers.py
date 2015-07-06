@@ -19,8 +19,8 @@ def with_client(test):
     return _wrapped_test
 
 
-def setUpApp(self):
-    manager = create_manager()
+def setUpApp(self, **kwargs):
+    manager = create_manager(**kwargs)
     self.app = manager.app
     self.manager = manager
     self.app.config['TESTING'] = True

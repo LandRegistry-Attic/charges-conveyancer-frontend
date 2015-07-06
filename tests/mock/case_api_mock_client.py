@@ -1,17 +1,25 @@
-from tests.mock.mock_response import MockJsonResponse
+from app.service.case_api import CaseApi
 
 
-class CaseApiMockClient:
-    @staticmethod
-    def get_cases():
-        cases = [{"reference": "1000",
-                  "clients": ["John Smith", "Alice Young"],
-                  "task": "Remortgage",
-                  "status": "Draft",
-                  "last_updated": "20.05.2014"},
-                 {"reference": "2000",
-                  "clients": ["Andrew Smith", "Mary Young"],
-                  "task": "Remortgage",
-                  "status": "Draft",
-                  "last_updated": "25.05.2013"}]
-        return MockJsonResponse(cases)
+class CaseApiMockClient(CaseApi):
+    def get_case_client(self):
+        cases = [
+            {
+                "status": "submitted",
+                "id": 1,
+                "created_on": "2015-04-20T03:30:51",
+                "conveyancer_id": 1,
+                "last_updated": "2015-05-12T20:15:24",
+                "type": "Case",
+                "deed_id": 1
+            }, {
+                "status": "submitted",
+                "id": 2,
+                "created_on": "2015-04-21T03:30:51",
+                "conveyancer_id": 1,
+                "last_updated": "2015-05-06T20:15:24",
+                "type": "Case",
+                "deed_id": 2
+            }
+        ]
+        return cases
