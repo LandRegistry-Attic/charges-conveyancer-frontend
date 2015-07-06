@@ -12,7 +12,7 @@ def register_routes(blueprint):
 
         return views.Cases(cases_sorted).render()
 
-    @blueprint.route('/start')
+    @blueprint.route('/')
     def start_page():
 
         return views.Start().render()
