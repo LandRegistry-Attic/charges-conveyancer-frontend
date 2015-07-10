@@ -4,5 +4,5 @@
 ### need to change every test when switching environments for example.       ###
 ################################################################################
 
-$CHARGES_URL = (ENV['CONVEYANCER_FE_URL'] || 'http://0.0.0.0:5000')
-$CASE_API_URL = (ENV['CASE_API_URL'] || 'http://0.0.0.0:8000')
+$CHARGES_URL = (ENV['CONVEYANCER_FE_URL'] || 'http://0.0.0.0:9040')
+$CASE_API_URL = (ENV['CASE_API_URL'] || 'http://0.0.0.0:9070')

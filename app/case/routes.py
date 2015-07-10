@@ -11,3 +11,8 @@ def register_routes(blueprint):
         cases_sorted = sorted(cases, key=key, reverse=True)
 
         return views.Cases(cases_sorted).render()
+
+    @blueprint.route('/')
+    def start_page():
+
+        return views.Start().render()

@@ -41,7 +41,7 @@ class Base(View):
 class Template (object):
     pageTitle = 'A Blank Page'
     assetPath = '/template/assets/'
-    serviceName = 'Service Name'
+    serviceName = 'Conveyancer Front End'
     headerClass = 'with-proposition'
 
     def footerSupportLinks(self):

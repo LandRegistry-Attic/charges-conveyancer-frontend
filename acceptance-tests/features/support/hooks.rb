@@ -9,6 +9,6 @@
 Before do
 end
 
-### Code that should be executed once all of the acceptance tests have run.
+### Code that is executed after acceptance tests for each feature have run
 After do
 end

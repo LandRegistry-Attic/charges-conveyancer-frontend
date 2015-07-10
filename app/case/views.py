@@ -6,3 +6,7 @@ class Cases(Template):
 
     def __init__(self, cases):
         self.cases = cases
+
+
+class Start(Template):
+    pageTitle = "View your case list"
