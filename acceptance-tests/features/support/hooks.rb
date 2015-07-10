@@ -10,7 +10,5 @@ Before do
 end
 
 ### Code that is executed after acceptance tests for each feature have run
-After do |scenario|
-  ### If an acceptance test scenario has failed then take a screenshot
-  save_screenshot("sshot-#{Time.new.to_i}.png", full: true) if scenario.failed?
+After do
 end
