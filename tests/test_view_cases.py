@@ -1,11 +1,12 @@
 from tests.helpers import with_client, setUpApp, with_context
+from tests.mock.case_api_mock_client import CaseApiMockClient
 from unittest import TestCase
 
 
 class TestViewCases (TestCase):
 
     def setUp(self):
-        setUpApp(self)
+        setUpApp(self, case_api_=CaseApiMockClient())
 
     @with_context
     @with_client

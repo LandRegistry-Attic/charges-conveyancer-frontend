@@ -1,3 +1,4 @@
+<a href="/case/new" class="button">Create a new case</a>
 <table id="casework-dashboard">
     <thead>
     <tr>
@@ -10,7 +11,7 @@
     </thead>
     <tbody>
     {{#cases}}
-        <tr class="summary">
+    <tr class="summary case-{{id}}">
             <td>{{reference}}</td>
             <td>
                 <ul>

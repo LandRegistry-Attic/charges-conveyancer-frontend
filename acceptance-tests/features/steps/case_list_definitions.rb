@@ -18,12 +18,8 @@ Given(/^I have added values to the case_api$/) do
   (1..$cases_to_add).each do
     # generate completely random case data
     case_json = {
-      id: rand(1..999_999_999),
       deed_id: rand(1..999_999_999),
-      conveyancer_id: rand(1..999_999_999),
-      status: (0...50).map { ('a'..'z').to_a[rand(26)] }.join,
-      last_updated:  Time.at(0.00 + rand * (0.00 - Time.now.to_f)),
-      created_on:  Time.at(0.00 + rand * (0.00 - Time.now.to_f))
+      conveyancer_id: rand(1..999_999_999)
     }.to_json
 
     uri = URI.parse($CASE_API_URL + '/case')
@@ -36,7 +32,7 @@ Given(/^I have added values to the case_api$/) do
     response = http.request(request)
 
     if response.code == '200' || response.code == '201'
-      $json_objects.push(case_json)
+      $json_objects.push(JSON.parse(response.body))
     end
   end
 end
@@ -62,30 +58,16 @@ Then(/^the case list is sorted by last updated date$/) do
 end
 
 Then(/^check if it has the rows I added$/) do
-  items_found = 0
-  is_present = false
-
   $json_objects.each do |json_object|
-    json_ruby_object = JSON.parse(json_object)
-    json_ruby_object['last_updated'] =
-      DateTime.parse(json_ruby_object['last_updated'].to_s)
-      .strftime('%d/%m/%Y')
-
-    is_present =  page.has_content?(json_ruby_object['status'].to_s) &&
-                  page.has_content?(json_ruby_object['last_updated'].to_s)
-
-    if is_present == true
-      items_found += 1
-      is_present = false
-    end
+    page.has_selector?(:css, ".case-#{json_object['id']}", count: 1)
+    page.has_content?(json_object['status'].to_s)
+    page.has_content?(json_object['last_updated'].to_s)
   end
-  assert_equal($cases_to_add, items_found)
 end
 
 Then(/^I cleanup the case_api$/) do
   $json_objects.each do |json_object|
-    uri = URI.parse($CASE_API_URL + '/case/' +
-                    JSON.parse(json_object)['id'].to_s)
+    uri = URI.parse("#{$CASE_API_URL}/case/#{json_object['id']}")
 
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Delete.new(uri.request_uri)

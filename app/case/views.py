@@ -10,3 +10,10 @@ class Cases(Template):
 
 class Start(Template):
     pageTitle = "View your case list"
+
+
+class CreateCase(Template):
+    pageTitle = "Create a new case"
+
+    def __init__(self, case=None):
+        self.case = case
