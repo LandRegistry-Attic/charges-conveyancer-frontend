@@ -14,7 +14,7 @@ If you would like to run all of the acceptance tests then navigate into the acce
 ./run_tests.sh
 '''
 
-You can also use pass arguments to this command as you would if you just running cucumber on it's own.
+You can also pass arguments to this command as you would if you were just running cucumber on it's own.
 
 For example you can use the following command to display a cut down version of cucumbers progress when it is running:
 
