@@ -34,6 +34,8 @@ Rubocop is ruby gem that will check any ruby code in the repository against the 
 
 In order to run Rubocop on the acceptance test code then navigate into the acceptance test folder and run the command:
 
-' ./run_linting.sh'
+'''
+./run_linting.sh
+'''
 
 If you wish to amend what cops are used, what files are ignored when running Rubocop then you will need to put this in the rubocop.yml file.
