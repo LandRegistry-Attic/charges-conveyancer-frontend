@@ -10,7 +10,23 @@ All of the acceptance tests are contained within the acceptance-tests folder wit
 
 If you would like to run all of the acceptance tests then navigate into the acceptance-tests folder and run the following command:
 
-'./run_tests.sh'
+'''
+./run_tests.sh
+'''
+
+You can also use pass arguments to this command as you would if you just running cucumber on it's own.
+
+For example you can use the following command to display a cut down version of cucumbers progress when it is running:
+
+'''
+./run_tests.sh --format progress
+'''
+
+Or you can use the following to run only the scenarios that have been tagged with whatever tags you specify:
+
+'''
+/run_tests.sh --tags @USXX
+'''
 
 ### Running Rubocop
 
