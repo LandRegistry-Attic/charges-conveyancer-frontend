@@ -4,7 +4,8 @@ class conveyancer_frontend (
     $host = '0.0.0.0',
     $branch_or_revision = 'master',
     $source = 'git://github.com/LandRegistry/charges-conveyancer-frontend',
-    $domain = 'conveyancer-frontend.*',
+    $subdomain = 'conveyancer-frontend',
+    $domain = undef,
     $owner = 'vagrant',
     $group = 'vagrant',
     $case_api_base_host = 'http://caseapi.lrdigitalmortgage-int.com:20100'
@@ -68,5 +69,9 @@ class conveyancer_frontend (
       File["/etc/systemd/system/${module_name}.service"],
       File["/var/run/${module_name}"],
     ],
+  }
+
+  if $environment == 'development' {
+    standard_env::dev_host { $subdomain: }
   }
 }
