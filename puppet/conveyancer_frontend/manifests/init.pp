@@ -8,7 +8,7 @@ class conveyancer_frontend (
     $domain = undef,
     $owner = 'vagrant',
     $group = 'vagrant',
-    $case_api_base_host = 'http://caseapi.lrdigitalmortgage-int.com:20100'
+    $case_api_base_host = 'http://case-api.dev.service.gov.uk'
 ) {
   require ::standard_env
 
