@@ -11,7 +11,7 @@
     </thead>
     <tbody>
     {{#cases}}
-    <tr class="summary case-{{id}}">
+        <tr class="summary case-{{id}}">
             <td>{{reference}}</td>
             <td>
                 <ul>
@@ -25,6 +25,11 @@
             <td>{{task}}</td>
             <td>{{status}}</td>
             <td>{{get_readable_updated_date}}</td>
+        </tr>
+        <tr class="details case-{{id}}">
+            <td colspan="6">
+                <a href="/case/{{id}}/mortgage/new">Create mortgage</a>
+            </td>
         </tr>
     {{/cases}}
     </tbody>
