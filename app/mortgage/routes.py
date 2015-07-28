@@ -2,7 +2,7 @@ from flask import redirect, url_for
 from app.mortgage import views
 
 
-def register_routes(blueprint, deed_api):
+def register_routes(blueprint, deed_api, case_api):
 
     @blueprint.route('/case/<int:case_id>/mortgage/new')
     def new_mortgage(case_id):
@@ -53,6 +53,8 @@ def register_routes(blueprint, deed_api):
             "You can't have an elephant in your garden"
         ]
         provisions = []
-        deed_api.create_deed(mdref, title, lender,
-                             borrowers, restrictions, provisions)
+        deed_id = deed_api.create_deed(
+            mdref, title, lender, borrowers, restrictions, provisions
+        )
+        case_api.update_case_with_deed_id(case_id, deed_id)
         return redirect(url_for('case.case_list'))

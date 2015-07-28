@@ -24,3 +24,16 @@ class CaseApi(object):
             return case_from_json(response.json())
         else:
             response.raise_for_status()
+
+    def update_case_with_deed_id(self, case_id, deed_id):
+        def update_endpoint():
+            return "{case}/{_id}/deed".format(
+                case=self.case_endpoint,
+                _id=case_id)
+
+        payload = {
+            'deed_id': deed_id
+        }
+        response = requests.post(update_endpoint(), json=payload)
+        if response.status_code != 200:
+            response.raise_for_status()
