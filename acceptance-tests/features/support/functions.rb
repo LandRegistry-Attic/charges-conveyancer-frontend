@@ -30,7 +30,7 @@ end
 def create_case_data
   case_json = {
     'deed_id' => @deed_id,
-    'conveyancer_id' =>ngem '1'
+    'conveyancer_id' => '1'
   }
   response = HTTP.post($CASE_API_URL + '/case', json: case_json)
   if response.code == 201
