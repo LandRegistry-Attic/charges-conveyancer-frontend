@@ -18,8 +18,7 @@ def register_routes(blueprint, case_api):
     @blueprint.route('/case/new', methods=['POST', 'GET'])
     def create_case():
         if request.method == 'POST':
-            deed_id = 1
-            case_api.create_case(deed_id)
+            case_api.create_case()
 
             return redirect(url_for('case.case_list'))
         else:

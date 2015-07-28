@@ -13,10 +13,10 @@ class CaseApi(object):
         cases_json = self.get_case_client()
         return [case_from_json(case) for case in cases_json]
 
-    def create_case(self, deed_id):
+    def create_case(self):
         payload = {
             "conveyancer_id": 1,
-            "deed_id": int(deed_id)
+            "deed_id": None
         }
         response = requests.post(self.case_endpoint, json=payload)
 
