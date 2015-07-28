@@ -20,7 +20,7 @@ def create_manager(
 
     app.register_blueprint(helloworld.blueprint)
     app.register_blueprint(case.blueprint(case_api_))
-    app.register_blueprint(mortgage.blueprint())
+    app.register_blueprint(mortgage.blueprint(deed_api_))
     app.register_blueprint(assets.govuk_template, url_prefix='/template')
 
     return manager
