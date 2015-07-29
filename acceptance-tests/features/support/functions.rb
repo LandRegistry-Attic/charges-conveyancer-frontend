@@ -17,6 +17,15 @@ def create_deed_data(deed_json)
   end
 end
 
+def get_deed(deed_id)
+  response = HTTP.get($DEED_API_URL + '/deed/' + deed_id.to_s)
+  if response.code == 200
+    JSON.parse(response.body)
+  else
+    fail "Couldn't get deed " + deed_id
+  end
+end
+
 def delete_deed_data(deed_id)
   response = HTTP.delete($DEED_API_URL + '/deed/' + deed_id.to_s)
   if response.code == 200

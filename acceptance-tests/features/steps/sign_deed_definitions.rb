@@ -1,5 +1,5 @@
 Given(/^I have signed my mortgage deed as "([^"]*)"$/) do |name|
-  step %(I search for the created deed)
+  step %(I search for the created deed using "#{name}"'s token)
   step %(I enter the borrowers signature "#{name}")
   step %(I click on the "Sign the deed" button)
 end

@@ -16,6 +16,7 @@ end
 
 Given(/^the conveyancer has created the following deed:$/) do |deed_json|
   @deed_id = create_deed_data(deed_json)
+  @deed = get_deed(@deed_id)
 end
 
 When(/^I click on the "([^"]*)" button$/) do |button_name|
