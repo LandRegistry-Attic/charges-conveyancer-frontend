@@ -11,6 +11,9 @@ class Cases(Template):
 class Start(Template):
     pageTitle = "View your case list"
 
+class DeedCreated(Template):
+    pageTitle = "Deed created"
+
 
 class CreateCase(Template):
     pageTitle = "Create a new case"
