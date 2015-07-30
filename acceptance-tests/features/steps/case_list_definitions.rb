@@ -9,12 +9,12 @@ $table_row_selector = 'table#casework-dashboard tbody tr'
 $json_objects = []
 $origin_number_of_table_rows = 0
 
-Given(/^I know how many items are originally in the list$/) do
-  visit $CHARGES_URL + '/cases'
+Given(/^I view the case list$/) do
+  step %(I navigate to the conveyancer frontend "/cases" page)
   $origin_number_of_table_rows = page.all(:css, $table_row_selector).length
 end
 
-Given(/^I have added values to the case_api$/) do
+And(/^I have added values to the case_api$/) do
   (1..$cases_to_add).each do
     # generate completely random case data
     case_json = {
