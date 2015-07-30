@@ -32,4 +32,7 @@ class CaseApi(object):
         endpoint = self.case_endpoint + "/" + case_id + "/deed"
         response = requests.post(endpoint, json=payload)
 
-        return response
+        if response.status_code == 200:
+            return response
+        else:
+            response.raise_for_status()
