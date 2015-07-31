@@ -4,7 +4,7 @@ Feature: Create case and deed helper page
   to have a page that will let them easily create a deed and a case for test purposes
 
 Scenario: Go to the create case page
-    Given I navigate to the case list page
+    Given I navigate to the conveyancer frontend "/cases" page
     When I click on the "Create a new case" link
     Then I am taken to the 'Create a new case' page
 

@@ -3,7 +3,7 @@ Then(/^I am taken to the '([^']*)' page$/) do |title|
 end
 
 Given(/^I am on the Create a new case page$/) do
-  step 'I navigate to the case list page'
+  step 'I navigate to the conveyancer frontend "/cases" page'
   @case_row = 'table#casework-dashboard tbody tr'
   @number_of_cases = page.all(:css, @case_row).length
   step %(I click on the "Create a new case" link)

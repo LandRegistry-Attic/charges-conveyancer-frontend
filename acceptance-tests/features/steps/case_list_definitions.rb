@@ -37,10 +37,6 @@ And(/^I have added values to the case_api$/) do
   end
 end
 
-When(/^I navigate to the case list page$/) do
-  visit $CHARGES_URL + '/cases'
-end
-
 Then(/^check if it has more or equal the number of rows I added$/) do
   rows = page.all(:css, $table_row_selector)
   assert_equal(rows.length, $cases_to_add + $origin_number_of_table_rows)
