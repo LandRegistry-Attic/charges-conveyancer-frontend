@@ -10,6 +10,6 @@ Scenario: Go to the create case page
 
 Scenario: Create a case
     Given I am on the Create a new case page
-    When I click on the "Create new test case" button
+    When I click on the "Create a new case" link
     Then the "Case list" page is displayed
     And a new case has been added to the case list
