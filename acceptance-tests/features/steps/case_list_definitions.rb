@@ -78,6 +78,18 @@ end
 
 Then(/^the status for the case is "([^"]*)"$/) do |status|
   case_status = find(:xpath,
-                     '//*[@id="casework-dashboard"]/tbody/tr[1]/td[4]').text
+                      '//*[@id="casework-dashboard"]/tbody/tr[1]/td[4]').text
   assert_equal(status, case_status)
+end
+
+Then(/^the reference "([^"]*)" is displayed in the case list$/) do |reference|
+  case_reference = find(:xpath,
+                        '//*[@id="casework-dashboard"]/tbody/tr[1]/td[1]').text
+  assert_equal(reference, case_reference)
+end
+
+Then(/^no reference is displayed in the case list$/) do
+  case_reference = find(:xpath,
+                        '//*[@id="casework-dashboard"]/tbody/tr[1]/td[1]').text
+  assert_equal('', case_reference)
 end
