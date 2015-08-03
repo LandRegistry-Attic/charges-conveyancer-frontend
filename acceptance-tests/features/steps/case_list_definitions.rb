@@ -74,7 +74,7 @@ end
 
 Then(/^the status for the case is "([^"]*)"$/) do |status|
   case_status = find(:xpath,
-                      '//*[@id="casework-dashboard"]/tbody/tr[1]/td[4]').text
+                     '//*[@id="casework-dashboard"]/tbody/tr[1]/td[4]').text
   assert_equal(status, case_status)
 end
 
