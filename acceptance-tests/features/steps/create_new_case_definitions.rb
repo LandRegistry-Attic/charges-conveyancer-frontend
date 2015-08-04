@@ -7,10 +7,11 @@ Given(/^I am on the Create a new case page$/) do
 end
 
 When(/^I enter the case reference "([^"]*)"$/) do |reference|
-  fill_in('caseReference', with: reference)
+  fill_in('case_ref', with: reference)
 end
 
 When(/^I leave the case reference field blank$/) do
+  fill_in('case_ref', with: '')
 end
 
 Then(/^a new case has been added to the case list$/) do
