@@ -1,4 +1,5 @@
 from app.views.template import Template
+from flask import url_for
 
 
 class Cases(Template):
@@ -17,3 +18,4 @@ class CreateCase(Template):
 
     def __init__(self, case=None):
         self.case = case
+        self.case_list_url = url_for('case.case_list')
