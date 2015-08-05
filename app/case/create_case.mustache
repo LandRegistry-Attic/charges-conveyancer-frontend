@@ -1,13 +1,15 @@
+
 <form method="post">
+  <label for="case_ref">Create a case reference (optional)
+    <input type="text" id="case_ref" name="case_ref">
+  </label>
+
   <input type="submit"
          name="create-case"
          id="create-case"
-         value="Create new test case"
+         value="Create case"
          class="button"/>
+
 </form>
 
-{{#case}}
-
-<h2>Case {{case.id}} created</h2>
-
-{{/case}}
+<a href="{{case_list_url}}">Cancel</a>

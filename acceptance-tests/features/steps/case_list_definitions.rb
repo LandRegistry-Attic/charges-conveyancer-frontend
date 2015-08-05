@@ -9,12 +9,12 @@ $table_row_selector = 'table#casework-dashboard tbody tr'
 $json_objects = []
 $origin_number_of_table_rows = 0
 
-Given(/^I know how many items are originally in the list$/) do
-  visit $CHARGES_URL + '/cases'
+Given(/^I view the case list$/) do
+  step %(I navigate to the conveyancer frontend "/cases" page)
   $origin_number_of_table_rows = page.all(:css, $table_row_selector).length
 end
 
-Given(/^I have added values to the case_api$/) do
+And(/^I have added values to the case_api$/) do
   (1..$cases_to_add).each do
     # generate completely random case data
     case_json = {
@@ -35,10 +35,6 @@ Given(/^I have added values to the case_api$/) do
       $json_objects.push(JSON.parse(response.body))
     end
   end
-end
-
-When(/^I navigate to the case list page$/) do
-  visit $CHARGES_URL + '/cases'
 end
 
 Then(/^check if it has more or equal the number of rows I added$/) do
@@ -80,4 +76,21 @@ Then(/^the status for the case is "([^"]*)"$/) do |status|
   case_status = find(:xpath,
                      '//*[@id="casework-dashboard"]/tbody/tr[1]/td[4]').text
   assert_equal(status, case_status)
+end
+
+Then(/^the reference "([^"]*)" is displayed in the case list$/) do |reference|
+  case_reference = find(:xpath,
+                        '//*[@id="casework-dashboard"]/tbody/tr[1]/td[1]').text
+  assert_equal(reference, case_reference)
+end
+
+Then(/^no reference is displayed in the case list$/) do
+  case_reference = find(:xpath,
+                        '//*[@id="casework-dashboard"]/tbody/tr[1]/td[1]').text
+  assert_equal('', case_reference)
+end
+
+Then(/^no new case has been created$/) do
+  case_list_rows = page.all(:css, $table_row_selector)
+  assert_equal(case_list_rows.length, $origin_number_of_table_rows)
 end
