@@ -13,14 +13,28 @@ class CaseApi(object):
         cases_json = self.get_case_client()
         return [case_from_json(case) for case in cases_json]
 
-    def create_case(self, deed_id):
+    def create_case(self):
         payload = {
-            "conveyancer_id": 1,
-            "deed_id": int(deed_id)
+            "conveyancer_id": 1
         }
         response = requests.post(self.case_endpoint, json=payload)
 
         if response.status_code == 201:
             return case_from_json(response.json())
+        else:
+            response.raise_for_status()
+
+    def update_case_with_deed(self, case_id, deed_id):
+        payload = {
+            "deed_id": deed_id
+        }
+        endpoint = "{case}/{case_id}/deed".format(
+            case=self.case_endpoint,
+            case_id=case_id
+        )
+        response = requests.post(endpoint, json=payload)
+
+        if response.status_code == 200:
+            return response
         else:
             response.raise_for_status()

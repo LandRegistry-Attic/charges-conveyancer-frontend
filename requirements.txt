@@ -3,6 +3,7 @@ flask-stache
 Flask-Script
 libsass
 Flask-Assets
+Flask-API
 govuk-template
 gunicorn
 requests

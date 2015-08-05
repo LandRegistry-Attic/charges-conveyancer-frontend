@@ -17,7 +17,7 @@ class Case:
 
 def case_from_json(case):
     return Case(case['id'],
-                case['deed_id'],
+                case['deed_id'] if 'deed_id' in case else None,
                 case['conveyancer_id'],
                 case['status'],
                 parse(case['created_on']),

@@ -1,4 +1,6 @@
 from app.service.case_api import CaseApi
+from flask import jsonify
+from flask.ext.api import status
 
 
 class CaseApiMockClient(CaseApi):
@@ -23,3 +25,6 @@ class CaseApiMockClient(CaseApi):
             }
         ]
         return cases
+
+    def update_case_with_deed(self, case_id, deed_id):
+        return jsonify(status_code=status.HTTP_200_OK)

@@ -3,7 +3,6 @@ from app.case import views
 
 
 def register_routes(blueprint, case_api):
-
     @blueprint.route('/cases')
     def case_list():
 

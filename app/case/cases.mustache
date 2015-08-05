@@ -11,7 +11,7 @@
     </thead>
     <tbody>
     {{#cases}}
-    <tr class="summary case-{{id}}">
+        <tr class="summary case-{{id}}">
             <td>{{reference}}</td>
             <td>
                 <ul>
@@ -25,6 +25,9 @@
             <td>{{task}}</td>
             <td>{{status}}</td>
             <td>{{get_readable_updated_date}}</td>
+            {{^deed_id}}
+                <td><a href="/case/{{id}}/deed/new" class="button">Create Deed</a></td>
+            {{/deed_id}}
         </tr>
     {{/cases}}
     </tbody>
