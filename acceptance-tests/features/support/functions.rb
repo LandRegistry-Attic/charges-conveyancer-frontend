@@ -38,7 +38,6 @@ end
 
 def create_case_data
   case_json = {
-    'deed_id' => @deed_id,
     'conveyancer_id' => '1'
   }
   response = HTTP.post($CASE_API_URL + '/case', json: case_json)
@@ -48,6 +47,19 @@ def create_case_data
     fail "Error: Couldn't create case #{case_json}, "\
             "Received response #{response.code}"
   end
+end
+
+def update_case_with_deed_id
+  deed_json = {
+    'deed_id' => @deed_id
+  }
+  response = HTTP.post($CASE_API_URL + '/case/' + @case_id.to_s +
+                       '/deed', json: deed_json)
+
+  return unless response.code != 200
+
+  fail "Error: Couldn't update case #{deed_json}, "\
+       "Received response #{response.code}"
 end
 
 def delete_case_data(case_id)
