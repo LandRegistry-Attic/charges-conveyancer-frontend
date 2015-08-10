@@ -28,6 +28,9 @@
             {{^deed_id}}
                 <td><a href="/case/{{id}}/deed/new" class="button">Create Deed</a></td>
             {{/deed_id}}
+            {{#confirmation_available}}
+                <td><a href="/case/{{id}}/deed/{{deed_id}}/completion" class="button">Confirm completion</a></td>
+            {{/confirmation_available}}
         </tr>
     {{/cases}}
     </tbody>
