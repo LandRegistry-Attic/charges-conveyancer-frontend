@@ -15,7 +15,7 @@ def create_manager(case_api_=CaseApi(), deed_api_=DeedApi()):
     static.register_assets(app)
 
     app.register_blueprint(helloworld.blueprint)
-    app.register_blueprint(case.blueprint(case_api_))
+    app.register_blueprint(case.blueprint(case_api_, deed_api_))
     app.register_blueprint(deed.blueprint(case_api_, deed_api_))
     app.register_blueprint(assets.govuk_template, url_prefix='/template')
 

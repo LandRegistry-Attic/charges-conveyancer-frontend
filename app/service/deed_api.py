@@ -15,8 +15,8 @@ class DeedApi(object):
                     "extended-address": "",
                     "locality": "London",
                     "postal-code": "N12 5TN"
-                    }
-                },
+                }
+            },
             "lender": {
                 "name": "Bank of England PLC",
                 "company-number": "2347672",
@@ -38,15 +38,15 @@ class DeedApi(object):
                 }
             },
                 {
-                "id": "2",
-                "name": "John Smith",
-                "address": {
-                    "street-address": "83 Lordship Park",
-                    "extended-address": "",
-                    "locality": "London",
-                    "postal-code": "N16 5UP"
-                }
-            }],
+                    "id": "2",
+                    "name": "John Smith",
+                    "address": {
+                        "street-address": "83 Lordship Park",
+                        "extended-address": "",
+                        "locality": "London",
+                        "postal-code": "N16 5UP"
+                    }
+                }],
             "restrictions": ["This is my restriction"],
             "provisions": ["I am a provision"]
         }
@@ -56,4 +56,15 @@ class DeedApi(object):
         if response.status_code == 200:
             return str(response.json()['id'])
         else:
+            response.raise_for_status()
+
+    def confirm_completion(self, deed_id, registrars_signature):
+        payload = {
+            'registrars-signature': registrars_signature
+        }
+
+        address = self.deed_endpoint + '{}/completion'.format(deed_id)
+        response = requests.post(address, data=payload)
+
+        if response.status_code != 200:
             response.raise_for_status()
