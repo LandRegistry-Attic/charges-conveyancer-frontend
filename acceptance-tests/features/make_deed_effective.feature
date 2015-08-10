@@ -4,15 +4,15 @@ Feature: Make Deed Effective
     As a Conveyancer I want to be able to make a deed effective
     So that it is ready for submission to Land Registry
 
-Scenario: Conveyancer Makes Deed Effective
+Scenario: Conveyancer Makes a Deed Effective
 
     - Only show Confirm completion button on case list only if the deed has been fully signed
     - Once marked complete a case should be shown as Completion Confirmed as the status
 
     Given I have a deed which all borrowers have signed
-    And the "Case list" page is displayed
-    When I click on the "Confirm completion" button
-    And I click on the "Confirm completion" button
+    And I navigate to the conveyancer frontend "/cases" page
+    When I click on the "Confirm completion" link
+    And I click on the "Confirm completion" link
     Then the "Case list" page is displayed
     And the status of the case is "Completion confirmed"
 
