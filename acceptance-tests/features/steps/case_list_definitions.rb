@@ -14,6 +14,10 @@ Given(/^I view the case list$/) do
   $origin_number_of_table_rows = page.all(:css, $table_row_selector).length
 end
 
+When(/^I click on the Confirm completion link$/) do
+  find(:css, 'tr.summary.case-' + @case_id.to_s + ' > td > a').click
+end
+
 And(/^I have added values to the case_api$/) do
   (1..$cases_to_add).each do
     # generate completely random case data

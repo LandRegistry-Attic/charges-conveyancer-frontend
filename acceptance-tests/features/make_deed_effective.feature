@@ -62,7 +62,7 @@ Scenario: Conveyancer Makes a Deed Effective
     - Once marked complete a case should be shown as Completion Confirmed as the status
 
     Given I navigate to the conveyancer frontend "/cases" page
-    When I click on the "Confirm completion" link
+    When I click on the Confirm completion link
     And I click on the "Confirm completion" button
     Then the "Case list" page is displayed
     And the status for the case is "Completion confirmed"
