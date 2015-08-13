@@ -5,7 +5,11 @@ Feature: Add Borrowers to Case
     I want to fill in my clients details
     So that I have them on my records
 
-Scenario: Add a Borrower to a Case Page
+Background:
+    Given I navigate to the conveyancer frontend "/cases" page
+    And I click on the "Create a new case" link
+
+Scenario: Access Add Borrower Page
 
     Details to be entered are:-
     - First name
@@ -15,40 +19,40 @@ Scenario: Add a Borrower to a Case Page
     - Mobile telephone number
     - Email address
 
-    Given I have navigated to the conveyancer frontend "/cases" page
-    And I click on the "Create a new case" button
-    When I click on the "Add Borrower" link
-    Then the "Add borrower" page is displayed
-    And the correct fields are displayed
+    When I click on the "Add a borrower to this case" link
+    Then the "Add a borrower" page is displayed
+    And all of a borrowers details can be entered
 
-Scenario: Add a borrower
+Scenario: Add Borrower to a Case
 
     - User must be able to save borrower information entered
     - Entered borrowers displayed on create case page
     - Entered borrowers names must be displayed on case list
 
-    Given I have navigated to the "add borrower" page
-    And I fill in the correct details
-    When I click on the "add borrower" button
-    Then the borrowers details are displayed on the "create case" page
-    And when I click on the "create case" button
-    Then the borrowers names are displayed on the case list
+    When I add the following borrower to a case:
+      | first name  | middle name | last name | address                           | mobile number | email address     |
+      | Sarah       | Jane        | Smith     | 83 Lordship Park, London, N16 5UP | 07991666999   | sjsmith@gmail.com |
+    Then the "Create case" page is displayed
+    And the borrowers details are displayed
+    When I click on the "Create case" button
+    Then the borrower "Sarah Jane Smith" is displayed in the case list
 
-Scenario: User tries to add a borrower without a mandatory field
+Scenario Outline: Try to Add a Borrower without all Mandatory Information
 
     - Each client must have a first and last name
     - Each client must have an address
     - Each client must have one mobile phone number
     - Each client must have one email address
 
-    Given I have navigated to the "Add borrower" page
-    And I fill in all the details except <mandatory field>
-    When I click on the add borrower button
-    Then a message is displayed stating "all mandatory fields must be completed"
+    When I click on the "Add a borrower to this case" link
+    And I fill in all the details except for <mandatory field>
+    And I click on the "Add borrower to case" button
+    Then a "All mandatory fields must be completed" message is displayed
 
     Examples:
-    | first name |
-    | last name |
-    |address|
-    |mobile number|
-    |email address|
+    | mandatory field   |
+    | first-name        |
+    | last-name         |
+    | address           |
+    | mobile-number     |
+    | email-address     |
