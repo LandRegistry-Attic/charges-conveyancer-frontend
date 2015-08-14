@@ -20,3 +20,12 @@ end
 ### Below are the main bulk of the step definitions for this part of the     ###
 ### project                                                                  ###
 ################################################################################
+
+Then(/^all of a borrowers details can be entered$/) do
+  page.has_field?('First Name', type: 'text')
+  page.has_field?('Middle Name', type: 'text')
+  page.has_field?('Last Name', type: 'text')
+  page.has_field?('Address', type: 'text')
+  page.has_field?('Mobile Number', type: 'text')
+  page.has_field?('Email Address', type: 'email')
+end
