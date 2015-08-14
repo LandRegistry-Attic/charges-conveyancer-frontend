@@ -29,8 +29,8 @@ Scenario: Add Borrower to a Case
     - Entered borrowers displayed on create case page
     - Entered borrowers names must be displayed on case list
 
-    When I add the following borrower to a case:
-      | first name  | middle name | last name | address                           | mobile number | email address     |
+    When I add the following borrowers to a case:
+      | FIRST NAME  | MIDDLE NAME | LAST NAME | ADDRESS                           | MOBILE NUMBER | EMAIL ADDRESS     |
       | Sarah       | Jane        | Smith     | 83 Lordship Park, London, N16 5UP | 07991666999   | sjsmith@gmail.com |
     Then the "Create case" page is displayed
     And the borrowers details are displayed
