@@ -24,10 +24,6 @@ Given(/^I navigate to the borrower frontend "([^"]*)" page$/) do |path|
   visit($BORROWER_FRONTEND_URL + path)
 end
 
-Then(/^the "([^"]*)" page is displayed$/) do |page_title|
-  page.has_selector?(:css, 'h1', text: page_title)
-end
-
 ################################################################################
 ### Page interaction steps                                                   ###
 ################################################################################
@@ -42,4 +38,16 @@ end
 
 When(/^I enter "([^"]*)" into the "([^"]*)" field$/) do |value, field|
   fill_in(field, with: value)
+end
+
+################################################################################
+### Checking page contents                                                   ###
+################################################################################
+
+Then(/^the "([^"]*)" page is displayed$/) do |page_title|
+  page.has_selector?(:css, 'h1', text: page_title)
+end
+
+Then(/^the message "([^"]*)" is displayed$/) do |message|
+  expect(page).to have_content(message)
 end

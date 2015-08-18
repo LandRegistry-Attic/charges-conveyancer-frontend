@@ -47,7 +47,7 @@ Scenario Outline: Try to Add a Borrower without all Mandatory Information
     When I click on the "Add a borrower to this case" link
     And I fill in all the details except for <mandatory field>
     And I click on the "Add borrower to case" button
-    Then a "All mandatory fields must be completed" message is displayed
+    Then the message "All mandatory fields must be completed" is displayed
 
     Examples:
     | mandatory field   |

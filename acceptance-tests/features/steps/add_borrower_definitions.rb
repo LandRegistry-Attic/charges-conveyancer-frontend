@@ -33,8 +33,8 @@ end
 
 Then(/^the borrowers details are displayed$/) do
   @borrowers.each do |borrower|
-    borrower.each do |key, value|
-      page.has_content?(borrower[key])
+    borrower.each do |_key, value|
+      page.has_content?(value)
     end
   end
 end
