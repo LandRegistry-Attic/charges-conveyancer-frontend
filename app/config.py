@@ -2,6 +2,6 @@ import os
 
 DEBUG = True
 CASE_API_BASE_HOST = os.getenv('CASE_API_BASE_HOST',
-                               'http://10.10.10.10:7000')
+                               'http://case-api.dev.service.gov.uk')
 DEED_API_BASE_HOST = os.getenv('DEED_API_BASE_HOST',
-                               'http://10.10.10.10:8000')
+                               'http://deedapi.dev.service.gov.uk')
