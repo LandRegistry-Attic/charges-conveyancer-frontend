@@ -38,3 +38,19 @@ Then(/^the borrowers details are displayed$/) do
     end
   end
 end
+
+When(/^I fill in all borrower details except for "([^"]*)"$/) do |mandatory_field|
+  borrower_hash = {
+    "First Name" => "Sarah",
+    "Middle Name" => "Jane",
+    "Last Name" => "Smith",
+    "Address" => "83 Lordship Park, London, N16 5UT",
+    "Mobile Number" => "01662364545",
+    "Email Address" => "sjsmith@gmail.com"
+  }
+  borrower_hash.each do |field, value|
+    if field != mandatory_field
+      step %(I enter "#{value}" into the "#{field}" field )
+    end
+  end
+end

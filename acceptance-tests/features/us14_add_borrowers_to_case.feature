@@ -45,14 +45,14 @@ Scenario Outline: Try to Add a Borrower without all Mandatory Information
     - Each client must have one email address
 
     When I click on the "Add a borrower to this case" link
-    And I fill in all the details except for <mandatory field>
+    And I fill in all borrower details except for <MANDATORY FIELD>
     And I click on the "Add borrower to case" button
     Then the message "All mandatory fields must be completed" is displayed
 
     Examples:
-    | mandatory field   |
-    | first-name        |
-    | last-name         |
-    | address           |
-    | mobile-number     |
-    | email-address     |
+    | MANDATORY FIELD     |
+    | "First Name"        |
+    | "Last Name"         |
+    | "Address"           |
+    | "Mobile Number"     |
+    | "Email Address"     |
