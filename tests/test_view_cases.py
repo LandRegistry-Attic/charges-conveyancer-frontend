@@ -48,13 +48,13 @@ class TestViewCases(TestCase):
     @with_context
     @with_client
     def test_submit_case_post(self, client):
-        res = client.post('/case/1/submission')
+        res = client.post('/case/1/application')
 
         self.assertEqual(res.status_code, 302)
 
     @with_context
     @with_client
     def test_submit_case_get(self, client):
-        res = client.get('/case/1/submission')
+        res = client.get('/case/1/application')
 
         self.assertEqual(res.status_code, 200)
