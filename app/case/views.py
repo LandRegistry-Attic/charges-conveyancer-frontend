@@ -16,6 +16,9 @@ class Cases(Template):
 class Start(Template):
     pageTitle = "View your case list"
 
+class Addborrower(Template):
+    pageTitle = "Add a new borrower"
+
 
 class CreateCase(Template):
     pageTitle = "Create a new case"

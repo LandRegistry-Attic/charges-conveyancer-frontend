@@ -39,3 +39,7 @@ def register_routes(blueprint, case_api, deed_api):
         else:
             current_date = strftime("%d/%m/%Y")
             return views.ConfirmCompletion(current_date).render()
+
+    @blueprint.route('/case/new/add_borrower')
+    def add_borrower():
+        return views.Addborrower().render()
