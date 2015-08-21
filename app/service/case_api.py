@@ -1,5 +1,5 @@
 import requests
-from app.case.model import case_from_json
+from app.case.model import Case
 from app import config
 
 
@@ -11,7 +11,7 @@ class CaseApi(object):
 
     def get_cases(self):
         cases_json = self.get_case_client()
-        return [case_from_json(case) for case in cases_json]
+        return [Case.from_json(cases_json[id_]) for id_ in cases_json]
 
     def create_case(self, case_ref):
         payload = {
@@ -21,7 +21,7 @@ class CaseApi(object):
         response = requests.post(self.case_endpoint, json=payload)
 
         if response.status_code == 201:
-            return case_from_json(response.json())
+            return Case.from_json(response.json())
         else:
             response.raise_for_status()
 

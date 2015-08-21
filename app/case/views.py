@@ -34,3 +34,9 @@ class ConfirmCompletion(Template):
     def __init__(self, current_date):
         self.current_date = current_date
         self.case_list_url = url_for('case.case_list')
+
+class CaseDetails(Template):
+    pageTitle = "Case details"
+
+    def __init__(self):
+        self.case_list_url = url_for('case.case_list')
