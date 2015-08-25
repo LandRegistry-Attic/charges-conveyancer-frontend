@@ -39,3 +39,15 @@ class CaseApi(object):
             return response
         else:
             response.raise_for_status()
+
+    def submit_case(self, case_id):
+        endpoint = "{case}/{case_id}/application".format(
+            case=self.case_endpoint,
+            case_id=case_id
+        )
+        response = requests.post(endpoint)
+
+        if response.status_code == 200:
+            return response
+        else:
+            response.raise_for_status()

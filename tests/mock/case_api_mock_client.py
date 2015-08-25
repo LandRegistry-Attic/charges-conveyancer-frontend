@@ -28,3 +28,6 @@ class CaseApiMockClient(CaseApi):
 
     def update_case_with_deed(self, case_id, deed_id):
         return jsonify(status_code=status.HTTP_200_OK)
+
+    def submit_case(self, case_id):
+        return jsonify(status_code=status.HTTP_200_OK)
