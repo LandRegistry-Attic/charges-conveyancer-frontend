@@ -4,7 +4,7 @@
         {{#has_errors}}
             <div class="errors">
                 {{#errors}}
-                    <div class="error form-group">{{key}}: {{error}}</div>
+                    <div class="error form-group">{{error}}</div>
                 {{/errors}}
             </div>
         {{/has_errors}}
@@ -13,54 +13,54 @@
 
         <p>
             <label for="first_name">First name
-                <input type="text" id="first_name" name="First name">
+                <input type="text" id="first_name" name="first_name" value={{first_name}}>
             </label>
         </p>
 
         <p>
             <label for="middle_names">Middle name(s) (optional)
-                <input type="text" id="middle_names" name="middle_names">
+                <input type="text" id="middle_names" name="middle_names" value={{middle_names}}>
             </label></p>
 
         <p>
             <label for="last_name">Last name
-                <input type="text" id="last_name" name="last_name">
+                <input type="text" id="last_name" name="last_name" value={{last_name}}>
             </label>
         </p>
 
         <p>
             <label for="street_address">Street address
-                <input type="text" id="street_address" name="street_address">
+                <input type="text" id="street_address" name="street_address" value={{street_address}}>
             </label>
         </p>
 
         <p>
             <label for="extended_address">Extended address (optional)
-                <input type="text" id="extended_address" name="extended_address">
+                <input type="text" id="extended_address" name="extended_address" value={{extended_address}}>
             </label>
         </p>
 
         <p>
             <label for="locality">Locality
-                <input type="text" id="locality" name="locality">
+                <input type="text" id="locality" name="locality" value={{locality}}>
             </label>
         </p>
 
         <p>
             <label for="post_code">Postcode
-                <input type="text" id="postcode" name="postcode">
+                <input type="text" id="postcode" name="postcode" , value={{postcode}}>
             </label>
         </p>
 
         <p>
             <label for="mobile_no">Mobile number
-                <input type="text" id="mobile_no" name="mobile_no">
+                <input type="text" id="mobile_no" name="mobile_no" , value={{mobile_no}}>
             </label>
         </p>
 
         <p>
             <label for="email_address">Email address
-                <input type="text" id="email_address" name="email_address">
+                <input type="text" id="email_address" name="email_address" , value={{email_address}}>
             </label>
         </p>
         <input type="submit"
