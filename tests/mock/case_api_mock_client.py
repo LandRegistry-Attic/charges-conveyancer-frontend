@@ -5,25 +5,33 @@ from flask.ext.api import status
 
 class CaseApiMockClient(CaseApi):
     def get_case_client(self):
-        cases = [
-            {
-                "status": "submitted",
+        cases = {
+            "1": {
+                "status": "Case created",
+                "borrowers": [
+                    {
+                        "email_address": "adds@a.pp",
+                        "address": [
+                            "a",
+                            "b"
+                        ],
+                        "last_name": "K",
+                        "type": "Borrower",
+                        "first_name": "D",
+                        "middle_names": "M",
+                        "id": 1,
+                        "case_id": 1,
+                        "mobile_no": "33322323"
+                    }
+                ],
+                "last_updated": "2015-08-20T13:26:42.829323",
+                "case_ref": "",
                 "id": 1,
-                "created_on": "2015-04-20T03:30:51",
                 "conveyancer_id": 1,
-                "last_updated": "2015-05-12T20:15:24",
-                "type": "Case",
-                "deed_id": 1
-            }, {
-                "status": "submitted",
-                "id": 2,
-                "created_on": "2015-04-21T03:30:51",
-                "conveyancer_id": 1,
-                "last_updated": "2015-05-06T20:15:24",
-                "type": "Case",
-                "deed_id": 2
+                "created_on": "2015-08-20T13:26:42.829401"
             }
-        ]
+        }
+
         return cases
 
     def update_case_with_deed(self, case_id, deed_id):

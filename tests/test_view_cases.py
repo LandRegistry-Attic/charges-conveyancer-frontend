@@ -44,3 +44,10 @@ class TestViewCases(TestCase):
         res = client.get('/case/1/deed/1/completion')
 
         self.assertEqual(res.status_code, 200)
+
+    @with_context
+    @with_client
+    def test_case_details_get(self, client):
+        res = client.get('/case/1/details')
+
+        self.assertEqual(res.status_code, 200)
