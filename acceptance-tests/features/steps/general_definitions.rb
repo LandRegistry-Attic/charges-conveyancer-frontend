@@ -48,6 +48,10 @@ Then(/^the "([^"]*)" page is displayed$/) do |page_title|
   page.has_selector?(:css, 'h1', text: page_title)
 end
 
-Then(/^the message "([^"]*)" is displayed$/) do |message|
-  expect(page).to have_content(message)
+Then(/^a message is displayed stating you didnt enter "([^"]*)"$/) do |field|
+  if field == 'Email address'
+    expect(page).to have_content('You have to enter correct ' + field)
+  else
+    expect(page).to have_content('You have to enter ' + field)
+  end
 end

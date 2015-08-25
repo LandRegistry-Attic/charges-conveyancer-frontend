@@ -8,6 +8,7 @@ Feature: Add Borrowers to Case
 Background:
     Given I navigate to the conveyancer frontend "/cases" page
     And I click on the "Create a new case" link
+    And I click on the "Create case" button
 
 Scenario: Access Add Borrower Page
 
@@ -19,7 +20,7 @@ Scenario: Access Add Borrower Page
     - Mobile telephone number
     - Email address
 
-    When I click on the "Add a borrower to this case" link
+    When I click on the "Add borrower" link
     Then the "Add a borrower" page is displayed
     And all of a borrowers details can be entered
 
@@ -30,11 +31,11 @@ Scenario: Add Borrower to a Case
     - Entered borrowers names must be displayed on case list
 
     When I add the following borrowers to a case:
-      | FIRST NAME  | MIDDLE NAME | LAST NAME | ADDRESS                           | MOBILE NUMBER | EMAIL ADDRESS     |
-      | Sarah       | Jane        | Smith     | 83 Lordship Park, London, N16 5UP | 07991666999   | sjsmith@gmail.com |
-    Then the "Create case" page is displayed
+      | FIRST NAME  | MIDDLE NAME | LAST NAME | STREET ADDRESS    | EXTENDED ADDRESS  | LOCALITY  | POSTCODE  |  MOBILE NUMBER  | EMAIL ADDRESS     |
+      | Sarah       | Jane        | Smith     | 83 Lordship Park  |                   | London    | N16 5UP   | 07991666999     | sjsmith@gmail.com |
+    Then the "Create details" page is displayed
     And the borrowers details are displayed
-    When I click on the "Create case" button
+    When I click on the "Cancel" link
     Then the borrower "Sarah Jane Smith" is displayed in the case list
 
 Scenario Outline: Try to Add a Borrower without all Mandatory Information
@@ -44,15 +45,17 @@ Scenario Outline: Try to Add a Borrower without all Mandatory Information
     - Each client must have one mobile phone number
     - Each client must have one email address
 
-    When I click on the "Add a borrower to this case" link
-    And I fill in all borrower details except for <MANDATORY FIELD>
-    And I click on the "Add borrower to case" button
-    Then the message "All mandatory fields must be completed" is displayed
+    When I click on the "Add borrower" link
+    And I fill in all borrower details except for <MANDATORY FIELD ID>
+    And I click on the "Add borrower" button
+    Then a message is displayed stating you didnt enter <MANDATORY FIELD NAME>
 
     Examples:
-    | MANDATORY FIELD     |
-    | "First Name"        |
-    | "Last Name"         |
-    | "Address"           |
-    | "Mobile Number"     |
-    | "Email Address"     |
+    | MANDATORY FIELD NAME    | MANDATORY FIELD ID    |
+    | "First name"            | "first_name"          |
+    | "Last name"             | "last_name"           |
+    | "Street address"        | "street_address"      |
+    | "Locality"              | "locality"            |
+    | "Postcode"              | "postcode"            |
+    | "Mobile number"         | "mobile_no"           |
+    | "Email address"         | "email_address"       |

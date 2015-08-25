@@ -94,10 +94,10 @@ Then(/^no reference is displayed in the case list$/) do
   assert_equal('', case_reference)
 end
 
-Then(/^the borrower "([^"]*)" is displayed in the case list$/) do |borrower_name|
+Then(/^the borrower "([^"]*)" is displayed in the case list$/) do |borrower|
   borrowers_names = find(:xpath,
                          '//*[@id="casework-dashboard"]/tbody/tr[1]/td[2]').text
-  assert_match(borrower_name, borrowers_names)
+  assert_match(borrower, borrowers_names)
 end
 
 Then(/^no new case has been created$/) do
