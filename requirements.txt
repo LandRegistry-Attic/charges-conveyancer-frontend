@@ -9,3 +9,4 @@ gunicorn
 requests
 python-dateutil
 flake8
+Flask-WTF

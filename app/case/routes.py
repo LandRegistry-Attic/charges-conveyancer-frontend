@@ -26,7 +26,8 @@ def register_routes(blueprint, case_api, deed_api):
 
     @blueprint.route('/case/<case_id>/details', methods=['GET'])
     def case_details(case_id):
-        return views.CaseDetails().render()
+        borrowers = case_api.get_borrowers(case_id)
+        return views.CaseDetails(case_id, borrowers).render()
 
     @blueprint.route('/')
     def start_page():
@@ -43,7 +44,3 @@ def register_routes(blueprint, case_api, deed_api):
         else:
             current_date = strftime("%d/%m/%Y")
             return views.ConfirmCompletion(current_date).render()
-
-    @blueprint.route('/case/new/add_borrower')
-    def add_borrower():
-        return views.Addborrower().render()

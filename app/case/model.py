@@ -24,14 +24,6 @@ class Case:
             borrowers = [Borrower.from_json(borrower)
                          for borrower in case['borrowers']]
 
-        def get_borrower_name(borrower):
-            name = borrower.first_name
-
-            if borrower.middle_names is not None:
-                name += ' ' + borrower.middle_names
-
-            return name + ' ' + borrower.last_name
-
         return Case(
             case['id'],
             case.get('deed_id', None),
@@ -40,5 +32,5 @@ class Case:
             parse(case['created_on']),
             parse(case['last_updated']),
             case.get('case_ref', ''),
-            [get_borrower_name(borrower) for borrower in borrowers]
+            borrowers
         )

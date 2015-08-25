@@ -4,7 +4,7 @@ Description=Control the <%=@module_name%>
 [Service]
 PIDFile=/var/run/<%=@module_name%>/<%=@module_name%>.pid
 WorkingDirectory=/opt/<%=@module_name%>
-Environment='B_GUNICORN_PORT=<%=@port%>' 'B_GUNICORN_HOST=<%=@host%>' 'CASE_API_BASE_HOST=<%=@case_api_base_host%>' 'DEED_API_BASE_HOST=<%=@deed_api_base_host%>'
+Environment='B_GUNICORN_PORT=<%=@port%>' 'B_GUNICORN_HOST=<%=@host%>' 'CASE_API_BASE_HOST=<%=@case_api_base_host%>' 'DEED_API_BASE_HOST=<%=@deed_api_base_host%>' 'CONVEYANCER_FE_SECRET_KEY=<%=@secret_key%>'
 Type=simple
 ExecStart=/bin/bash -c './bin/run.sh'
 ExecReload=/bin/kill -s HUP $MAINPID

@@ -1,5 +1,6 @@
 import requests
 from app.case.model import Case
+from app.borrower.model import Borrower
 from app import config
 
 
@@ -37,5 +38,33 @@ class CaseApi(object):
 
         if response.status_code == 200:
             return response
+        else:
+            response.raise_for_status()
+
+    def get_borrowers(self, case_id):
+        endpoint = "{case}/{case_id}/borrowers".format(
+            case=self.case_endpoint,
+            case_id=case_id
+        )
+
+        response = requests.get(endpoint)
+
+        if response.status_code == 200:
+            return [Borrower.from_json(item) for item in response.json()]
+        else:
+            response.raise_for_status()
+
+    def add_borrowers(self, case_id, borrowers):
+        borrowers_json = [borrower.to_json() for borrower in borrowers]
+        payload = {'borrowers': borrowers_json}
+
+        endpoint = "{case}/{case_id}/borrowers".format(
+            case=self.case_endpoint,
+            case_id=case_id
+        )
+        response = requests.post(endpoint, json=payload)
+
+        if response.status_code == 200:
+            return [Borrower.from_json(item) for item in response.json()]
         else:
             response.raise_for_status()

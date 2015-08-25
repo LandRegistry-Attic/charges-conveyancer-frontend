@@ -8,3 +8,7 @@ main {
 .button {
   @include button;
 }
+
+label, input, select {
+  display: block;
+}
