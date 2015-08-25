@@ -23,10 +23,6 @@ When(/^I click on the "([^"]*)" button$/) do |button_name|
   click_button(button_name)
 end
 
-When(/^I click on the "([^"]*)" button$/) do |link_name|
-  click_link(link_name)
-end
-
 Given(/^the conveyancer has created a case that is linked to a deed$/) do
   @case_id = create_case_data
   update_case_with_deed_id
