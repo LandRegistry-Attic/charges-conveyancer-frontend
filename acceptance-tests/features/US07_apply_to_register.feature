@@ -12,7 +12,7 @@ Acceptance Criteria:
   - Deed must have a status of "completion confirmed" before it can be submitted
 
   Background:
-      And the conveyancer has created the following deed:
+      Given the conveyancer has created the following deed:
       """
 
       {
@@ -69,9 +69,9 @@ Acceptance Criteria:
         ]
     }
       """
-      Given the conveyancer has created a case that is linked to a deed
+      And the conveyancer has created a case that is linked to a deed
       And all borrowers have signed the deed
-      And conveyancer has made the deed effective 
+      And conveyancer has made the deed effective
 
 Scenario: Apply to register a signed deed
   When I select to Apply to register the deed

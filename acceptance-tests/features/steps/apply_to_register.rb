@@ -18,7 +18,7 @@ end
 
 And(/^conveyancer has made the deed effective$/) do
   step %(I navigate to the conveyancer frontend "/cases" page)
-  click_link('Confirm completion')
+  find(:xpath, ".//*[@id='casework-dashboard']/tbody/tr[1]/td[6]/a").click
   click_button('Confirm completion')
 end
 
