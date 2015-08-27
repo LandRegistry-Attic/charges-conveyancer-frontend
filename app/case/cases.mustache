@@ -31,6 +31,9 @@
             {{#confirmation_available}}
                 <td><a href="/case/{{id}}/deed/{{deed_id}}/completion" class="button">Confirm completion</a></td>
             {{/confirmation_available}}
+            {{#application_available}}
+                <td><a href="/case/{{id}}/application" class="button">Apply to register</a></td>
+            {{/application_available}}
         </tr>
     {{/cases}}
     </tbody>

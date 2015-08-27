@@ -6,8 +6,10 @@ class Cases(Template):
     pageTitle = "Case list"
 
     def __init__(self, cases):
-        def set_confirmation_available(case):
+        def set_available_actions(case):
             case.confirmation_available = case.status == 'Deed signed'
+            case.application_available = case.status == 'Completion confirmed'
+
             return case
 
         def set_borrower_names(case):
@@ -21,7 +23,7 @@ class Cases(Template):
                 case.borrower_names.append(name + ' ' + borrower.last_name)
             return case
 
-        self.cases = [set_confirmation_available(item) for item in cases]
+        self.cases = [set_available_actions(item) for item in cases]
         self.cases = [set_borrower_names(item) for item in cases]
 
 
@@ -42,6 +44,13 @@ class ConfirmCompletion(Template):
 
     def __init__(self, current_date):
         self.current_date = current_date
+        self.case_list_url = url_for('case.case_list')
+
+
+class SubmitCase(Template):
+    pageTitle = "Apply to register"
+
+    def __init__(self):
         self.case_list_url = url_for('case.case_list')
 
 

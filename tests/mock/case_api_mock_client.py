@@ -39,3 +39,6 @@ class CaseApiMockClient(CaseApi):
 
     def get_borrowers(self, case_id):
         return {}
+
+    def submit_case(self, case_id):
+        return jsonify(status_code=status.HTTP_200_OK)

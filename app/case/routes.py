@@ -44,3 +44,11 @@ def register_routes(blueprint, case_api, deed_api):
         else:
             current_date = strftime("%d/%m/%Y")
             return views.ConfirmCompletion(current_date).render()
+
+    @blueprint.route('/case/<case_id>/application', methods=['POST', 'GET'])
+    def submit_case(case_id):
+        if request.method == 'POST':
+            case_api.submit_case(case_id)
+            return redirect(url_for('case.case_list'))
+        else:
+            return views.SubmitCase().render()
