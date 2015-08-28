@@ -13,6 +13,7 @@ Scenario Outline: Conveyancer Enters Reference
   And I click on the "Create a new case" link
   When I enter the case reference <reference>
   And I click on the "Create case" button
+  And I click on the "Cancel" link
   Then the "Case list" page is displayed
   And the reference <reference> is displayed in the case list
 
@@ -30,6 +31,7 @@ Scenario: Conveyancer Doesn't Enter a Reference
   And I click on the "Create a new case" link
   When I leave the case reference field blank
   And I click on the "Create case" button
+  And I click on the "Cancel" link
   Then the "Case list" page is displayed
   And no reference is displayed in the case list
 

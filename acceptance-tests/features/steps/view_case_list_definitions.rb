@@ -94,6 +94,12 @@ Then(/^no reference is displayed in the case list$/) do
   assert_equal('', case_reference)
 end
 
+Then(/^the borrower "([^"]*)" is displayed in the case list$/) do |borrower|
+  borrowers_names = find(:xpath,
+                         '//*[@id="casework-dashboard"]/tbody/tr[1]/td[2]').text
+  assert_match(borrower, borrowers_names)
+end
+
 Then(/^no new case has been created$/) do
   case_list_rows = page.all(:css, $table_row_selector)
   assert_equal(case_list_rows.length, $origin_number_of_table_rows)
