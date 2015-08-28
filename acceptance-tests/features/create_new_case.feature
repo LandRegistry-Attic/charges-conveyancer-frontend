@@ -1,3 +1,5 @@
+@create_new_case
+
 Feature: Create case and deed helper page
   In order to be able to provide an interactive demo at Sprint planning
   the team want the Conveyancer Frontend

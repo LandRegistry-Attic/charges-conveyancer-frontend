@@ -19,10 +19,15 @@ def register_routes(blueprint, case_api, deed_api):
     def create_case():
         if request.method == 'POST':
             case_ref = request.form.get('case_ref')
-            case_api.create_case(case_ref)
-            return redirect(url_for('case.case_list'))
+            case = case_api.create_case(case_ref)
+            return redirect(url_for('case.case_details', case_id=case.id))
         else:
             return views.CreateCase().render()
+
+    @blueprint.route('/case/<case_id>/details', methods=['GET'])
+    def case_details(case_id):
+        borrowers = case_api.get_borrowers(case_id)
+        return views.CaseDetails(case_id, borrowers).render()
 
     @blueprint.route('/')
     def start_page():

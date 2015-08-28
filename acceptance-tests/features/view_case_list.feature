@@ -1,4 +1,4 @@
-@US31
+@view_case_list
 
 Feature: Conveyancer Views Case List
   As a Lender/Conveyancer

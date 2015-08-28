@@ -9,7 +9,8 @@ class conveyancer_frontend (
     $owner = 'vagrant',
     $group = 'vagrant',
     $case_api_base_host = 'http://case-api.dev.service.gov.uk',
-    $deed_api_base_host = 'http://deedapi.dev.service.gov.uk'
+    $deed_api_base_host = 'http://deedapi.dev.service.gov.uk',
+    $secret_key = 'a8a8652e-98e8-491f-aab5-d1faf31008ca'
 ) {
   require ::standard_env
 
