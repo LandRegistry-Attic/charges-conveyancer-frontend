@@ -57,11 +57,11 @@ class SubmitCase(Template):
 class CaseDetails(Template):
     pageTitle = "Case details"
 
-    def __init__(self, case_id, borrowers):
+    def __init__(self, case_id, borrowers, property_):
         self.case_list_url = url_for('case.case_list')
         self.add_borrower_url = url_for('borrower.add_borrower',
                                         case_id=case_id)
-        self.add_property_url = url_for('property.add_property',
+        self.add_property_url = url_for('property.search_property',
                                         case_id=case_id)
 
         def set_full_names(borrower):
@@ -75,3 +75,4 @@ class CaseDetails(Template):
 
         self.borrowers = [set_full_names(item) for item in borrowers]
         self.has_borrowers = borrowers != []
+        self.property = property_

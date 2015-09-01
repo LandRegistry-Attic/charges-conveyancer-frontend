@@ -51,6 +51,9 @@ class TestViewCases(TestCase):
         res = client.get('/case/1/details')
 
         self.assertEqual(res.status_code, 200)
+        res_data = res.data.decode()
+        self.assertIn('<div id="borrowers"', res_data)
+        self.assertIn('<div id="property"', res_data)
 
     @with_context
     @with_client
@@ -63,5 +66,12 @@ class TestViewCases(TestCase):
     @with_client
     def test_submit_case_get(self, client):
         res = client.get('/case/1/application')
+
+        self.assertEqual(res.status_code, 200)
+
+    @with_context
+    @with_client
+    def test_search_property_get(self, client):
+        res = client.get('/case/1/property/search')
 
         self.assertEqual(res.status_code, 200)

@@ -2,42 +2,60 @@
     <p>
         <a href="{{add_borrower_url}}">Add borrower</a>
     </p>
-
-    <p>
-        <a href="{{add_property_url}}">Add property</a>
-    </p>
+    {{^property}}
+        <p>
+            <a href="{{add_property_url}}">Add property</a>
+        </p>
+    {{/property}}
 </div>
 
-<div id="borrowers" class="text">
-    {{#has_borrowers}}
+{{#has_borrowers}}
+    <div id="borrowers" class="text">
+
         <h2>Borrowers</h2>
-    {{/has_borrowers}}
+
+        <ul>
+            {{#borrowers}}
+                <li>
+                    <p>
+
+                    <h3>{{full_name}}</h3>
+                    <h4>Contact Information</h4>
+                    <dl>
+                        <dt>Email address</dt>
+                        <dd>{{email_address}}</dd>
+                        <dt>Mobile phone number</dt>
+                        <dd>{{mobile_no}}</dd>
+                    </dl>
+
+                    <h4>Current address</h4>
+                    {{#address}}
+                        <ul>
+                            <li>
+                                {{.}}
+                            </li>
+                        </ul>
+                    {{/address}}
+                    </p>
+                </li>
+            {{/borrowers}}
+        </ul>
+    </div>
+{{/has_borrowers}}
+
+{{#property}}
+    <div id="property">
+        <h2>Property</h2>
+    </div>
     <ul>
-        {{#borrowers}}
-            <li>
-                <p>
-
-                <h3>{{full_name}}</h3>
-                <h4>Contact Information</h4>
-                <dl>
-                    <dt>Email address</dt>
-                    <dd>{{email_address}}</dd>
-                    <dt>Mobile phone number</dt>
-                    <dd>{{mobile_no}}</dd>
-                </dl>
-
-                <h4>Current address</h4>
-                {{#address}}
-                    <ul>
-                        <li>
-                            {{.}}
-                        </li>
-                    </ul>
-                {{/address}}
-                </p>
-            </li>
-        {{/borrowers}}
+        <li>{{property.title_number}}</li>
+        <li>{{property.street}}</li>
+        {{#property.extended}}
+            <li>{{property.extended}}</li>
+        {{/property.extended}}
+        <li>{{property.locality}}</li>
+        <li>{{property.postcode}}</li>
     </ul>
-</div>
+{{/property}}
 
 <a href="{{case_list_url}}">Cancel</a>
