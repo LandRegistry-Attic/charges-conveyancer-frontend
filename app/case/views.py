@@ -61,6 +61,8 @@ class CaseDetails(Template):
         self.case_list_url = url_for('case.case_list')
         self.add_borrower_url = url_for('borrower.add_borrower',
                                         case_id=case_id)
+        self.add_property_url = url_for('property.add_property',
+                                        case_id=case_id)
 
         def set_full_names(borrower):
             full_name = borrower.first_name
