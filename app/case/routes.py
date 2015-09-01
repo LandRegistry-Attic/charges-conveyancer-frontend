@@ -27,7 +27,8 @@ def register_routes(blueprint, case_api, deed_api):
     @blueprint.route('/case/<case_id>/details', methods=['GET'])
     def case_details(case_id):
         borrowers = case_api.get_borrowers(case_id)
-        return views.CaseDetails(case_id, borrowers).render()
+        property_ = case_api.get_property(case_id)
+        return views.CaseDetails(case_id, borrowers, property_).render()
 
     @blueprint.route('/')
     def start_page():
