@@ -49,4 +49,4 @@ class CaseApiMockClient(CaseApi):
 
     def get_property(self, case_id):
         return Property("LO280", "Friar Street", "Market Square",
-                        "Reading", "RG1 1DP")
+                        "Reading", "RG1 1DP", "freehold")
