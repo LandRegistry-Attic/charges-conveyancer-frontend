@@ -10,7 +10,8 @@ Before do
 end
 
 ### Code that is executed after acceptance tests for each feature have run
-After do
+After do |scenario|
+  save_screenshot("sshot-#{Time.new.to_i}.png", full: true) if scenario.failed?
   if @deed_id
     puts "Deleting test deed #{@deed_id}"
     delete_deed_data(@deed_id)
