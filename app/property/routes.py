@@ -1,6 +1,7 @@
 from app.property import views
-from app.property.model import Property
+from .model import Property
 from flask import request, url_for, redirect
+from .forms import AddProperty
 
 
 def register_routes(blueprint, case_api, property_api):
@@ -8,13 +9,18 @@ def register_routes(blueprint, case_api, property_api):
                      methods=['GET', 'POST'])
     def search_property(case_id):
         if request.method == 'GET':
-            return views.AddProperty(case_id).render()
+            return views.AddProperty(AddProperty(), case_id).render()
         else:
-            title_number = request.form['title_number']
-            property_ = property_api.get_property(title_number)
-            return views.AddProperty(case_id,
-                                     property_,
-                                     property_ is None).render()
+            form = AddProperty()
+            if form.validate_on_submit():
+                title_number = request.form['title_number']
+                property_ = property_api.get_property(title_number)
+                return views.AddProperty(form,
+                                         case_id,
+                                         property_,
+                                         property_ is None).render()
+            else:
+                return views.AddProperty(form, case_id).render()
 
     @blueprint.route('/case/<case_id>/property/new', methods=['POST'])
     def add_property(case_id):

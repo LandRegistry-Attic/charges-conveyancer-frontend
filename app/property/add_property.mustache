@@ -1,17 +1,27 @@
-{{#show_error_msg}}
-    <p>
-        Invalid title number!
-    </p>
-{{/show_error_msg}}
-
 <form method="post">
+    {{#show_error_msg}}
+        <p>
+            Title number not found. Please check and try again
+        </p>
+    {{/show_error_msg}}
+
+    {{#has_errors}}
+        <div class="errors">
+            {{#errors}}
+                <div class="error form-group">{{error}}</div>
+            {{/errors}}
+        </div>
+    {{/has_errors}}
+
+    {{{ form.csrf_token }}}
+
     <label for="title_number">Title number
         <input type="text" id="title_number" name="title_number">
     </label>
 
     <input type="submit"
-           name="search-property"
-           id="search-property"
+           name="search-title-number"
+           id="search-title-number"
            value="Search"
            class="button"/>
 </form>
