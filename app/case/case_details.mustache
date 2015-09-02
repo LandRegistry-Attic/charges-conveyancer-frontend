@@ -48,13 +48,14 @@
         <h2>Property</h2>
     </div>
     <ul>
-        <li>{{property.title_number}}</li>
+        <li>Title number: {{property.title_number}}</li>
         <li>{{property.street}}</li>
         {{#property.extended}}
             <li>{{property.extended}}</li>
         {{/property.extended}}
         <li>{{property.locality}}</li>
         <li>{{property.postcode}}</li>
+        <li>Tenure: {{property.tenure}}</li>
     </ul>
 {{/property}}
 
