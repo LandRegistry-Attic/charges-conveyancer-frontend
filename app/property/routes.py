@@ -23,9 +23,10 @@ def register_routes(blueprint, case_api, property_api):
         extended = request.form.get('extended', None)
         locality = request.form['locality']
         postcode = request.form['postcode']
+        tenure = request.form['tenure']
 
         property_ = Property(title_number, street, extended,
-                             locality, postcode)
+                             locality, postcode, tenure)
 
         case_api.add_property(case_id, property_)
 

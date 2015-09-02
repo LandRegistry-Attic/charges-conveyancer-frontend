@@ -14,7 +14,6 @@
            id="search-property"
            value="Search"
            class="button"/>
-
 </form>
 
 <p>
@@ -29,14 +28,18 @@
         {{/property.extended}}
         <li>{{property.locality}}</li>
         <li>{{property.postcode}}</li>
+        <li>Tenure: {{property.tenure}}</li>
     </ul>
 
     <form method="post" action="{{add_property_url}}">
-        <input type="hidden" name="title_number" value={{property_title_number}}>
-        <input type="hidden" name="street" value={{property_street}}>
-        <input type="hidden" name="extended" value={{property_extended}}>
-        <input type="hidden" name="locality" value={{property_locality}}>
-        <input type="hidden" name="postcode" value={{property_postcode}}>
+        <input type="hidden" name="title_number" value="{{property.title_number}}">
+        <input type="hidden" name="street" value="{{property.street}}">
+        {{#property.extended}}
+            <input type="hidden" name="extended" value="{{property.extended}}">
+        {{/property.extended}}
+        <input type="hidden" name="locality" value="{{property.locality}}">
+        <input type="hidden" name="postcode" value="{{property.postcode}}">
+        <input type="hidden" name="tenure" value="{{property.tenure}}">
         <input type="submit"
                name="add-property"
                id="add-property"
