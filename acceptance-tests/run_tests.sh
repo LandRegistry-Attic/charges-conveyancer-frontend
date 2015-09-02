@@ -20,7 +20,7 @@ rm -f sshot*
 ### Installs any gems specified in the gemfile.
 BUNDLE_GEMFILE=$gemfile bundle install
 
-if [ -z "$1"]
+if [ -z "$@"]
   then
   ### If no arguments supplied when running this script then execute all tests other than those tagged as wip
   BUNDLE_GEMFILE=$gemfile bundle exec cucumber $currentLocation --tags ~@wip
