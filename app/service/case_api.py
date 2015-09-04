@@ -52,6 +52,8 @@ class CaseApi(object):
 
         if response.status_code == 200:
             return [Borrower.from_json(item) for item in response.json()]
+        elif response.status_code == 404:
+            return None
         else:
             response.raise_for_status()
 
