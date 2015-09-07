@@ -73,6 +73,7 @@ class CaseDetails(Template):
             borrower.full_name = full_name + ' ' + borrower.last_name
             return borrower
 
-        self.borrowers = [set_full_names(item) for item in borrowers]
-        self.has_borrowers = borrowers != []
+        if borrowers is not None:
+            self.borrowers = [set_full_names(item) for item in borrowers]
+
         self.property = property_
