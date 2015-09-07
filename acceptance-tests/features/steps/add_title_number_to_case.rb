@@ -13,20 +13,16 @@ And(/^I enter a title number$/) do
   click_button('Search')
 end
 
-Then(/^the title number is returned$/) do
+Then(/^the correct address details are displayed$/) do
   page.should have_content('Title number: LO3827')
-end
-
-And(/^address consists of street address, extended address, locality and postcode$/) do
   page.should have_content('42A Broad Street')
   page.should have_content('Market Square')
-  page.should have_content('42A Broad Street')
   page.should have_content('Slough')
   page.should have_content('SL2 1TP')
+  page.should have_content('Tenure: freehold')
 end
 
-And(/^the tenure associated with the title number is returned$/) do
-  page.should have_content('Tenure: freehold')
+When(/^select the returned property$/) do
   click_button('Select this property')
 end
 
@@ -39,7 +35,7 @@ And(/^I enter an invalid title number$/) do
   click_button('Search')
 end
 
-Then(/^an error message is displayed to the user$/) do
+Then(/^an invalid Title Number error message is displayed to the user$/) do
   page.should have_content('Title number not found. Please check and try again')
 end
 
