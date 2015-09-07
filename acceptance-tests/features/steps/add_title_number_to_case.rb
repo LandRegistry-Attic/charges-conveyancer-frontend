@@ -9,7 +9,7 @@ When(/^I select to add a property to the case$/) do
 end
 
 And(/^I enter a title number$/) do
-  fill_in('Title number', :with => 'LO3827')
+  fill_in('Title number', with: 'LO3827')
   click_button('Search')
 end
 
@@ -31,14 +31,13 @@ And(/^the add title number button is no longer available$/) do
 end
 
 And(/^I enter an invalid title number$/) do
-  fill_in('Title number', :with => 'AA3827')
+  fill_in('Title number', with: 'AA3827')
   click_button('Search')
 end
 
 Then(/^an invalid Title Number error message is displayed to the user$/) do
   page.should have_content('Title number not found. Please check and try again')
 end
-
 
 And(/^the selected property address details are re\-displayed$/) do
   page.should have_content('Title number: LO3827')
