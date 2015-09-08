@@ -8,7 +8,6 @@
 ### Code that should be executed before the acceptance tests have run.
 Before do
 end
-
 ### Code that is executed after acceptance tests for each feature have run
 After do
   if @deed_id

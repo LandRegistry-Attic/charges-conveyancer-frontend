@@ -1,6 +1,8 @@
 from app.service.case_api import CaseApi
 from flask import jsonify
 from flask.ext.api import status
+from app.borrower.model import Borrower
+from app.property.model import Property
 
 
 class CaseApiMockClient(CaseApi):
@@ -38,7 +40,13 @@ class CaseApiMockClient(CaseApi):
         return jsonify(status_code=status.HTTP_200_OK)
 
     def get_borrowers(self, case_id):
-        return {}
+        return [Borrower("John", "Edward", "Smith", "446336484843",
+                         "john.smith@test.com", ["London", "Oxford Street"]
+                         )]
 
     def submit_case(self, case_id):
         return jsonify(status_code=status.HTTP_200_OK)
+
+    def get_property(self, case_id):
+        return Property("LO280", "Friar Street", "Market Square",
+                        "Reading", "RG1 1DP", "freehold")

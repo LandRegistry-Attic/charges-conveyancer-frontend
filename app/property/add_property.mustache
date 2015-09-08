@@ -1,0 +1,65 @@
+<form method="post">
+    {{#show_error_msg}}
+        <p>
+            Title number not found. Please check and try again
+        </p>
+    {{/show_error_msg}}
+
+    {{#has_errors}}
+        <div class="errors">
+            {{#errors}}
+                <div class="error form-group">{{error}}</div>
+            {{/errors}}
+        </div>
+    {{/has_errors}}
+
+    {{{ form.csrf_token }}}
+
+    <label for="title_number">Title number
+        <input type="text" id="title_number" name="title_number">
+    </label>
+
+    <input type="submit"
+           name="search-title-number"
+           id="search-title-number"
+           value="Search"
+           class="button"/>
+</form>
+
+<p>
+{{#property}}
+    <ul>
+        <b>
+            <li>Title number: {{property.title_number}}</li>
+            <li>{{property.street}}</li>
+        </b>
+        {{#property.extended}}
+            <li>{{property.extended}}</li>
+        {{/property.extended}}
+        <li>{{property.locality}}</li>
+        <li>{{property.postcode}}</li>
+        <li>Tenure: {{property.tenure}}</li>
+    </ul>
+
+    <form method="post" action="{{add_property_url}}">
+        <input type="hidden" name="title_number" value="{{property.title_number}}">
+        <input type="hidden" name="street" value="{{property.street}}">
+        {{#property.extended}}
+            <input type="hidden" name="extended" value="{{property.extended}}">
+        {{/property.extended}}
+        <input type="hidden" name="locality" value="{{property.locality}}">
+        <input type="hidden" name="postcode" value="{{property.postcode}}">
+        <input type="hidden" name="tenure" value="{{property.tenure}}">
+        <input type="submit"
+               name="add-property"
+               id="add-property"
+               value="Select this property"
+               class="button"/>
+    </form>
+
+{{/property}}
+</p>
+
+<p>
+    <a href="{{case_details_url}}">Back</a>
+</p>
