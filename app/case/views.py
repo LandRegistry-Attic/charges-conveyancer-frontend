@@ -75,5 +75,6 @@ class CaseDetails(Template):
 
         if borrowers is not None:
             self.borrowers = [set_full_names(item) for item in borrowers]
+            self.has_borrowers = True
 
         self.property = property_
