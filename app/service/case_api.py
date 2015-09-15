@@ -13,7 +13,7 @@ class CaseApi(object):
 
     def get_cases(self):
         cases_json = self.get_case_client()
-        return [Case.from_json(cases_json[id_]) for id_ in cases_json]
+        return [Case.from_json(item) for item in cases_json]
 
     def create_case(self, case_ref):
         payload = {
