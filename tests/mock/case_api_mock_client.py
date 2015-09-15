@@ -7,8 +7,8 @@ from app.property.model import Property
 
 class CaseApiMockClient(CaseApi):
     def get_case_client(self):
-        cases = {
-            "1": {
+        cases = [
+            {
                 "status": "Case created",
                 "borrowers": [
                     {
@@ -32,7 +32,7 @@ class CaseApiMockClient(CaseApi):
                 "conveyancer_id": 1,
                 "created_on": "2015-08-20T13:26:42.829401"
             }
-        }
+        ]
 
         return cases
 
