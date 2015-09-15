@@ -1,11 +1,15 @@
 import requests
+import json
 from app import config
+from app.service.case_api import CaseApi
 
 
 class DeedApi(object):
     deed_endpoint = "{}/deed/".format(config.DEED_API_BASE_HOST)
 
-    def create_deed(self):
+    def create_deed(self, case_id):
+        borrowers = CaseApi().get_borrowers(case_id)
+
         payload = {
             "mdref": "MD0149A",
             "title": {
@@ -27,30 +31,21 @@ class DeedApi(object):
                     "postal-code": "NW10 6TQ"
                 }
             },
-            "borrowers": [{
-                "id": "1",
-                "name": "Peter Smith",
-                "address": {
-                    "street-address": "83 Lordship Park",
-                    "extended-address": "",
-                    "locality": "London",
-                    "postal-code": "N16 5UP"
-                }
-            },
-                {
-                    "id": "2",
-                    "name": "John Smith",
-                    "address": {
-                        "street-address": "83 Lordship Park",
-                        "extended-address": "",
-                        "locality": "London",
-                        "postal-code": "N16 5UP"
-                    }
-                }],
+            "borrowers": [],
             "restrictions": ["This is my restriction"],
             "provisions": ["I am a provision"]
         }
 
+
+        for idx, borrower in enumerate(borrowers):
+            payload["borrowers"].append(
+                {"id": idx+1,
+                "name": "%s %s" % (borrower.first_name, borrower.last_name),
+                "address":  borrower.address
+                }
+            )
+
+        print(payload)
         response = requests.post(self.deed_endpoint, json=payload)
 
         if response.status_code == 200:
