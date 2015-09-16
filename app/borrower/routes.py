@@ -23,6 +23,7 @@ def register_routes(blueprint, case_api):
                     address.append(request.form['extended_address'])
                 address.append(request.form['locality'])
                 address.append(request.form['postcode'])
+                id = "" 
 
                 borrower = Borrower(first_name,
                                     middle_names,
@@ -30,7 +31,7 @@ def register_routes(blueprint, case_api):
                                     mobile_no,
                                     email_address,
                                     address,
-                                    Null)
+                                    id)
 
                 case_api.add_borrowers(case_id, [borrower])
                 return redirect(url_for('case.case_details', case_id=case_id))
