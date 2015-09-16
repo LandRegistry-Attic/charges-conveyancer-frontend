@@ -37,9 +37,9 @@ class DeedApi(object):
         }
 
 
-        for idx, borrower in enumerate(borrowers):
+        for borrower in borrowers:
             payload["borrowers"].append(
-                {"id": idx+1,
+                {"id": borrower.id,
                 "name": "%s %s" % (borrower.first_name, borrower.last_name),
                 "address":  borrower.address
                 }
