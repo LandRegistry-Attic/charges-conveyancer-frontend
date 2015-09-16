@@ -29,7 +29,8 @@ def register_routes(blueprint, case_api):
                                     last_name,
                                     mobile_no,
                                     email_address,
-                                    address)
+                                    address,
+                                    Null)
 
                 case_api.add_borrowers(case_id, [borrower])
                 return redirect(url_for('case.case_details', case_id=case_id))

@@ -1,12 +1,13 @@
 class Borrower:
     def __init__(self, first_name, middle_names, last_name,
-                 mobile_no, email_address, address):
+                 mobile_no, email_address, address, id):
         self.first_name = first_name
         self.middle_names = middle_names
         self.last_name = last_name
         self.mobile_no = mobile_no
         self.email_address = email_address
         self.address = address
+        self.id = id
 
     @staticmethod
     def from_json(borrower_json):
