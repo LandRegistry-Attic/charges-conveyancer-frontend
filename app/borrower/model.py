@@ -15,7 +15,8 @@ class Borrower:
                         borrower_json['last_name'],
                         borrower_json['mobile_no'],
                         borrower_json['email_address'],
-                        borrower_json['address'])
+                        borrower_json['address'],
+                        borrower_json['id'])
 
     def to_json(self):
         return {'first_name': self.first_name,
