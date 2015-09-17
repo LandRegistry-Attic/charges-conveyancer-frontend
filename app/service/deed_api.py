@@ -12,15 +12,6 @@ class DeedApi(object):
 
         payload = {
             "mdref": "MD0149A",
-            "title": {
-                "title-number": "GHR67832",
-                "address": {
-                    "street-address": "18 Lordly Place",
-                    "extended-address": "",
-                    "locality": "London",
-                    "postal-code": "N12 5TN"
-                }
-            },
             "lender": {
                 "name": "Bank of England PLC",
                 "company-number": "2347672",
@@ -31,19 +22,10 @@ class DeedApi(object):
                     "postal-code": "NW10 6TQ"
                 }
             },
-            "borrowers": [],
+            "case_id": case_id,
             "restrictions": ["This is my restriction"],
             "provisions": ["I am a provision"]
         }
-
-
-        for borrower in borrowers:
-            payload["borrowers"].append(
-                {"id": borrower.id,
-                "name": "%s %s" % (borrower.first_name, borrower.last_name),
-                "address":  borrower.address
-                }
-            )
 
         print(payload)
         response = requests.post(self.deed_endpoint, json=payload)
