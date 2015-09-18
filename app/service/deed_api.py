@@ -1,14 +1,11 @@
 import requests
-import json
 from app import config
-from app.service.case_api import CaseApi
 
 
 class DeedApi(object):
     deed_endpoint = "{}/deed/".format(config.DEED_API_BASE_HOST)
 
     def create_deed(self, case_id):
-        borrowers = CaseApi().get_borrowers(case_id)
 
         payload = {
             "mdref": "MD0149A",

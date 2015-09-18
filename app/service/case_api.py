@@ -67,7 +67,7 @@ class CaseApi(object):
         )
         response = requests.post(endpoint, json=payload)
 
-        if response.status_code == 200: 
+        if response.status_code == 200:
             return [Borrower.from_json(item) for item in response.json()]
         else:
             response.raise_for_status()
