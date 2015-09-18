@@ -24,7 +24,6 @@ class DeedApi(object):
             "provisions": ["I am a provision"]
         }
 
-        print(payload)
         response = requests.post(self.deed_endpoint, json=payload)
 
         if response.status_code == 200:
