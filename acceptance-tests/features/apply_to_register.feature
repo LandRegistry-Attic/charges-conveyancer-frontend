@@ -12,11 +12,10 @@ Acceptance Criteria:
   - Deed must have a status of "completion confirmed" before it can be submitted
 
 Background:
-  Given I have created a case and deed with two borrowers
-  And all borrowers have signed the deed
-  And conveyancer has made the deed effective
+  Given I have created a case and deed with two borrowers that has been signed
 
 @delete_test_data
 Scenario: Apply to register a signed deed
+  Given the conveyancer has made the deed effective
   When I select to Apply to register the deed
   Then the status for the case is "Submitted"

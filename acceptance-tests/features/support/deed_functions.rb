@@ -20,6 +20,20 @@ def get_deed_data(deed_id)
   end
 end
 
+def sign_deed_data(deed_id, borrower_id, borrower_name)
+  payload = {
+    'signature' => borrower_name
+  }
+  response = HTTP.post(Env.deed_api + '/deed/' + deed_id.to_s + '/' +
+                      borrower_id.to_s + '/signature/', json: payload)
+  if response.code == 200
+    JSON.parse(response.body)
+  else
+    fail "Error: Couldn't sign deed #{deed_id}, "\
+            "Received response #{response.code}"
+  end
+end
+
 def delete_deed_data(deed_id)
   response = HTTP.delete(Env.deed_api + '/deed/' + deed_id.to_s)
   if response.code == 200
