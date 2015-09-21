@@ -8,6 +8,7 @@ Feature: Retrieve Deed details with actual borrower and property details
 Background:
     Given I have created a case and deed with two borrowers
 
+@delete_test_data
 Scenario: Ensure the borrower and property details that appear on the Deed are those that are entered when creating the case.
     When I retrieve the deed
     Then the correct borrower details are returned

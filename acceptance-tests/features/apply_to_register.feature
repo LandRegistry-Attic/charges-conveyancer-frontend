@@ -16,6 +16,7 @@ Background:
   And all borrowers have signed the deed
   And conveyancer has made the deed effective
 
+@delete_test_data
 Scenario: Apply to register a signed deed
   When I select to Apply to register the deed
   Then the status for the case is "Submitted"

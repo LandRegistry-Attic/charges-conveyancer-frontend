@@ -10,6 +10,7 @@ Background:
     And I navigate to the borrower frontend "/deed/search" page
     And I have signed my mortgage deed as "John Hughes"
 
+@delete_test_data
 Scenario: Conveyancer Makes a Deed Effective
 
     - Only show Confirm completion button on case list only if the deed has been fully signed
