@@ -6,9 +6,7 @@ Feature: Make Deed Effective
 
 Background:
 
-    Given I have created a case and deed with one borrower
-    And I navigate to the borrower frontend "/deed/search" page
-    And I have signed my mortgage deed as "John Hughes"
+    Given I have created a case and deed with one borrower that has been signed
 
 @delete_test_data
 Scenario: Conveyancer Makes a Deed Effective

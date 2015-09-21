@@ -16,7 +16,7 @@ Given(/^all borrowers have signed the deed$/) do
   click_button('Sign the deed')
 end
 
-And(/^conveyancer has made the deed effective$/) do
+And(/^the conveyancer has made the deed effective$/) do
   step %(I navigate to the conveyancer frontend "/cases" page)
   find(:xpath, ".//*[@id='casework-dashboard']/tbody/tr[1]/td[6]/a").click
   click_button('Confirm completion')
