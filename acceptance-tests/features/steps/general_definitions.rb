@@ -3,11 +3,11 @@
 ################################################################################
 
 Given(/^I navigate to the conveyancer frontend "([^"]*)" page$/) do |path|
-  visit($CHARGES_URL + path)
+  visit(Env.conveyancer_frontend + path)
 end
 
 Given(/^I navigate to the borrower frontend "([^"]*)" page$/) do |path|
-  visit($BORROWER_FRONTEND_URL + path)
+  visit(Env.borrower_frontend + path)
 end
 
 ################################################################################
