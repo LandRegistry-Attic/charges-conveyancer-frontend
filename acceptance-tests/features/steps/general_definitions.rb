@@ -1,27 +1,13 @@
 ################################################################################
-### Setting up data steps and test preparation steps                         ###
-################################################################################
-
-Given(/^the conveyancer has created the following deed:$/) do |deed_json|
-  @deed_id = create_deed_data(deed_json)
-  @deed = get_deed(@deed_id)
-end
-
-Given(/^the conveyancer has created a case that is linked to a deed$/) do
-  @case_id = create_case_data
-  update_case_with_deed_id
-end
-
-################################################################################
 ### Navigating through the frontend steps                                    ###
 ################################################################################
 
 Given(/^I navigate to the conveyancer frontend "([^"]*)" page$/) do |path|
-  visit($CHARGES_URL + path)
+  visit(Env.conveyancer_frontend + path)
 end
 
 Given(/^I navigate to the borrower frontend "([^"]*)" page$/) do |path|
-  visit($BORROWER_FRONTEND_URL + path)
+  visit(Env.borrower_frontend + path)
 end
 
 ################################################################################

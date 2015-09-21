@@ -26,7 +26,7 @@ And(/^I have added values to the case_api$/) do
       conveyancer_id: rand(1..999_999_999)
     }.to_json
 
-    uri = URI.parse($CASE_API_URL + '/case')
+    uri = URI.parse(Env.case_api + '/case')
 
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Post.new(uri.request_uri)
@@ -67,7 +67,7 @@ end
 
 Then(/^I cleanup the case_api$/) do
   $json_objects.each do |json_object|
-    uri = URI.parse("#{$CASE_API_URL}/case/#{json_object['id']}")
+    uri = URI.parse("#{Env.case_api}/case/#{json_object['id']}")
 
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Delete.new(uri.request_uri)

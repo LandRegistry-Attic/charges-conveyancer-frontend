@@ -5,18 +5,10 @@ from app import config
 class DeedApi(object):
     deed_endpoint = "{}/deed/".format(config.DEED_API_BASE_HOST)
 
-    def create_deed(self):
+    def create_deed(self, case_id):
+
         payload = {
             "mdref": "MD0149A",
-            "title": {
-                "title-number": "GHR67832",
-                "address": {
-                    "street-address": "18 Lordly Place",
-                    "extended-address": "",
-                    "locality": "London",
-                    "postal-code": "N12 5TN"
-                }
-            },
             "lender": {
                 "name": "Bank of England PLC",
                 "company-number": "2347672",
@@ -27,26 +19,7 @@ class DeedApi(object):
                     "postal-code": "NW10 6TQ"
                 }
             },
-            "borrowers": [{
-                "id": "1",
-                "name": "Peter Smith",
-                "address": {
-                    "street-address": "83 Lordship Park",
-                    "extended-address": "",
-                    "locality": "London",
-                    "postal-code": "N16 5UP"
-                }
-            },
-                {
-                    "id": "2",
-                    "name": "John Smith",
-                    "address": {
-                        "street-address": "83 Lordship Park",
-                        "extended-address": "",
-                        "locality": "London",
-                        "postal-code": "N16 5UP"
-                    }
-                }],
+            "case_id": case_id,
             "restrictions": ["This is my restriction"],
             "provisions": ["I am a provision"]
         }
