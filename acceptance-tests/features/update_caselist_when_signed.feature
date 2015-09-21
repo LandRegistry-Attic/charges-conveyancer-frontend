@@ -14,14 +14,14 @@ Scenario: When no borrowers have signed the case status is still 'Deed created'
 
 Scenario: When one of two borrower has signed the case status is still 'Deed created'
     Given I navigate to the borrower frontend "/deed/search" page
-    And I have signed my mortgage deed as "Peter Smith"
+    And I have signed my mortgage deed as "John Hughes"
     When I navigate to the conveyancer frontend "/cases" page
     Then the status for the case is "Deed created"
 
 Scenario: When two of two borrowers have signed the case status is still 'Deed signed'
     Given I navigate to the borrower frontend "/deed/search" page
-    And I have signed my mortgage deed as "Peter Smith"
+    And I have signed my mortgage deed as "John Hughes"
     And I navigate to the borrower frontend "/deed/search" page
-    And I have signed my mortgage deed as "Sarah Jane Smith"
+    And I have signed my mortgage deed as "Susan Hughes"
     When I navigate to the conveyancer frontend "/cases" page
     Then the status for the case is "Deed signed"
