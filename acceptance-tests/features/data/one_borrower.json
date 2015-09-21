@@ -12,19 +12,6 @@
          "Nottingham",
          "NO9 6YU"
        ]
-     },
-     {
-       "first_name": "Susan",
-       "last_name": "Hughes",
-       "email_address": "shughes@gmail.com",
-       "type": "Borrower",
-       "mobile_no": "07970445566",
-       "middle_names": "Paula",
-       "address": [
-         "54 Low Street",
-         "Nottingham",
-         "N02 5MS"
-       ]
      }
    ]
 }
