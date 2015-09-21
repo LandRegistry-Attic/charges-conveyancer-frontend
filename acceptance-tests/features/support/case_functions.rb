@@ -1,41 +1,3 @@
-def find_data_in_table_row(table_row_id, unique_value, dataValue)
-  ### Retrieve the contents of the specified row
-  row = page.find(:css, table_row_id, text: unique_value).text
-  ### Check supplied data value is present in the table row and return result
-  assertion = row.include? dataValue
-  assert_equal(true, assertion)
-end
-
-def create_deed_data(deed_json)
-#deed_json = JSON.parse(deed_json)
-  response = HTTP.post($DEED_API_URL + '/deed/', json: deed_json)
-  if response.code == 200
-    JSON.parse(response.body)['id']
-  else
-    fail "Error: Couldn't create deed #{deed_json}, "\
-            "Received response #{response.code}"
-  end
-end
-
-def get_deed(deed_id)
-  response = HTTP.get($DEED_API_URL + '/deed/' + deed_id.to_s)
-  if response.code == 200
-    JSON.parse(response.body)
-  else
-    fail "Couldn't get deed " + deed_id
-  end
-end
-
-def delete_deed_data(deed_id)
-  response = HTTP.delete($DEED_API_URL + '/deed/' + deed_id.to_s)
-  if response.code == 200
-    puts "Deed #{deed_id} has been deleted."
-  else
-    fail "Error: Couldn't delete deed #{deed_id}, "\
-            "received response #{response.code}."
-  end
-end
-
 def create_case_data
   case_json = {
     'conveyancer_id' => '1'
@@ -49,19 +11,6 @@ def create_case_data
   end
 end
 
-def update_case_with_deed_id
-  deed_json = {
-    'deed_id' => @deed_id
-  }
-  response = HTTP.post($CASE_API_URL + '/case/' + @case_id.to_s +
-                       '/deed', json: deed_json)
-
-  return unless response.code != 200
-
-  fail "Error: Couldn't update case #{deed_json}, "\
-       "Received response #{response.code}"
-end
-
 def delete_case_data(case_id)
   response = HTTP.delete($CASE_API_URL + '/case/' + case_id.to_s)
   if response.code == 200
@@ -73,6 +22,7 @@ def delete_case_data(case_id)
 end
 
 def add_borrowers_to_case(case_id, borrower_json)
+  borrower_json = JSON.parse(borrower_json)
   response = HTTP.post($CASE_API_URL + '/case/' + case_id.to_s +
                       '/borrowers', json: borrower_json)
   if response.code == 200
@@ -94,7 +44,7 @@ def get_borrowers_for_case(case_id)
 end
 
 def add_property_to_case(case_id, property_json)
-
+  property_json = JSON.parse(property_json)
   response = HTTP.post($CASE_API_URL + '/case/' + case_id.to_s +
                       '/property', json: property_json)
   if response.code == 200
@@ -119,12 +69,10 @@ def update_case_deed(deed_id, case_id)
   end
 end
 
-def get_deed_data(deed_id)
-  response = HTTP.get($DEED_API_URL + '/deed/' + deed_id.to_s)
-  if response.code == 200
-    JSON.parse(response.body)
-  else
-    fail "Error: Couldn't retrieve deed #{deed_id}, "\
-            "Received response #{response.code}"
-  end
+def find_data_in_table_row(table_row_id, unique_value, dataValue)
+  ### Retrieve the contents of the specified row
+  row = page.find(:css, table_row_id, text: unique_value).text
+  ### Check supplied data value is present in the table row and return result
+  assertion = row.include? dataValue
+  assert_equal(true, assertion)
 end
