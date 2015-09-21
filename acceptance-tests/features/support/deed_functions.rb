@@ -1,7 +1,7 @@
 def create_deed_data(case_id, deed_json)
   deed_json = JSON.parse(deed_json)
   deed_json['case_id'] = case_id
-  response = HTTP.post($DEED_API_URL + '/deed/', json: deed_json)
+  response = HTTP.post(Env.deed_api + '/deed/', json: deed_json)
   if response.code == 200
     JSON.parse(response.body)['id']
   else
@@ -11,7 +11,7 @@ def create_deed_data(case_id, deed_json)
 end
 
 def get_deed_data(deed_id)
-  response = HTTP.get($DEED_API_URL + '/deed/' + deed_id.to_s)
+  response = HTTP.get(Env.deed_api + '/deed/' + deed_id.to_s)
   if response.code == 200
     JSON.parse(response.body)
   else
@@ -21,7 +21,7 @@ def get_deed_data(deed_id)
 end
 
 def delete_deed_data(deed_id)
-  response = HTTP.delete($DEED_API_URL + '/deed/' + deed_id.to_s)
+  response = HTTP.delete(Env.deed_api + '/deed/' + deed_id.to_s)
   if response.code == 200
     puts "Deed #{deed_id} has been deleted."
   else

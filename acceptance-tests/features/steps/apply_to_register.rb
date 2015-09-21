@@ -1,14 +1,14 @@
 Given(/^all borrowers have signed the deed$/) do
-  visit($BORROWER_FRONTEND_URL + '/deed/search')
-  @deed = HTTP.get($DEED_API_URL + '/deed/' + @deed_id.to_s)
+  visit(Env.borrower_frontend + '/deed/search')
+  @deed = HTTP.get(Env.deed_api + '/deed/' + @deed_id.to_s)
   @borrower_token =
   JSON.parse(@deed.body)['deed']['operative-deed']['borrowers'][0]['token']
   fill_in('borrower_token', with: @borrower_token)
   click_button('Search')
   click_button('Sign the deed')
 
-  visit($BORROWER_FRONTEND_URL + '/deed/search')
-  @deed = HTTP.get($DEED_API_URL + '/deed/' + @deed_id.to_s)
+  visit(Env.borrower_frontend + '/deed/search')
+  @deed = HTTP.get(Env.deed_api + '/deed/' + @deed_id.to_s)
   @borrower_token =
   JSON.parse(@deed.body)['deed']['operative-deed']['borrowers'][1]['token']
   fill_in('borrower_token', with: @borrower_token)
