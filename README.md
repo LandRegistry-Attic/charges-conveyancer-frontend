@@ -2,9 +2,50 @@
 
 The Conveyancer Frontend provides a way for Conveyancers to create Mortgage deeds and send them to Borrowers to be signed.
 
+
+## Contents
+- [Usage](#usage)
+- [Getting Started](#getting-started)
+- [Testing](#testing)
+
+## Usage
+GET/POST    /case/<case_id>/borrower/new                # add borrower to a case
+GET         /cases                                      # get all cases
+GET/POST    /case/new                                   # add a new case
+GET/POST    /case/<case_id>/deed/<deed_id>/completion   # confirm case completion
+GET/POST    /case/<case_id>/application                 # submit a case
+GET/POST    /case/<case_id>/deed/new                    # create a new deed
+
+## Getting started
+
+Get the git submodules
+```
+git submodule init
+git submodule update
+```
+
+Install the requirements
+```
+pip install -r requirements.txt
+pip install -r requirements_test.txt
+```
+
+To run the application run the command
+```
+python run.py runserver
+```
+
+
 ## Testing
 
-### Running the Tests
+### Unit tests
+
+Run the unit tests
+```
+python tests.py
+```
+
+### Acceptance tests
 
 All of the acceptance tests are contained within the acceptance-tests folder with the feature files under the features folder and the step-definitions under the steps folder.
 
