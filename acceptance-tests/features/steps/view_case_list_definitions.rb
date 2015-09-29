@@ -15,7 +15,7 @@ Given(/^I view the case list$/) do
 end
 
 When(/^I click on the Confirm completion link$/) do
-  find(:css, 'tr.summary.case-' + @case_id.to_s + ' > td > a').click
+  find(:css, 'tr.summary.case-' + @created_case_id.to_s + ' > td > a').click
 end
 
 And(/^I have added values to the case_api$/) do
