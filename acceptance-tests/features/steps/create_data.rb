@@ -20,7 +20,7 @@ Given(/^I have created a case and deed with two borrowers$/) do
   @created_deed = get_deed_data(@created_deed_id)
 end
 
-Given(/^I have created a case and deed with one borrower that has been signed$/) do
+Given(/^I have created a case and deed with one borrower that is signed$/) do
   @created_case_id = create_case_data
 
   borrower_json = File.read('./features/data/one_borrower.json')
@@ -42,7 +42,7 @@ Given(/^I have created a case and deed with one borrower that has been signed$/)
   end
 end
 
-Given(/^I have created a case and deed with two borrowers that has been signed$/) do
+Given(/^I have created a case and deed with two borrowers that is signed$/) do
   @created_case_id = create_case_data
 
   borrower_json = File.read('./features/data/two_borrowers.json')

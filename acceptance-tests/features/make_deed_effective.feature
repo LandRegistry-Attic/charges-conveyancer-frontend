@@ -6,7 +6,7 @@ Feature: Make Deed Effective
 
 Background:
 
-    Given I have created a case and deed with one borrower that has been signed
+    Given I have created a case and deed with one borrower that is signed
 
 @delete_test_data
 Scenario: Conveyancer Makes a Deed Effective

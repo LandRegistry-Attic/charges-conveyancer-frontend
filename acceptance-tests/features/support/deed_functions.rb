@@ -24,8 +24,8 @@ def sign_deed_data(deed_id, borrower_id, borrower_name)
   payload = {
     'signature' => borrower_name
   }
-  response = HTTP.post(Env.deed_api + '/deed/' + deed_id.to_s + '/' +
-                      borrower_id.to_s + '/signature/', json: payload)
+  response = HTTP.post("#{Env.deed_api}/deed/#{deed_id}/"\
+                      "#{borrower_id}/signature/", json: payload)
   if response.code == 200
     JSON.parse(response.body)
   else

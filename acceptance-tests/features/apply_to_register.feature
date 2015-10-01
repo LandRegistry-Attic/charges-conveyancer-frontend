@@ -12,7 +12,7 @@ Acceptance Criteria:
   - Deed must have a status of "completion confirmed" before it can be submitted
 
 Background:
-  Given I have created a case and deed with two borrowers that has been signed
+  Given I have created a case and deed with two borrowers that is signed
 
 @delete_test_data
 Scenario: Apply to register a signed deed

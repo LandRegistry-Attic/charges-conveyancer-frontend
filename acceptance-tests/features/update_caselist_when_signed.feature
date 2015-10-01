@@ -25,6 +25,6 @@ Scenario: When two of two borrowers have signed the case status is still 'Deed s
     Given I navigate to the borrower frontend "/deed/search" page
     And I have signed my mortgage deed as "John Hughes"
     And I navigate to the borrower frontend "/deed/search" page
-    And I have signed my mortgage deed as "Susan Hughes"
+    And I have signed my mortgage deed as "Susan Paula Hughes"
     When I navigate to the conveyancer frontend "/cases" page
     Then the status for the case is "Deed signed"
