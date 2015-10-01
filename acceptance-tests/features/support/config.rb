@@ -26,3 +26,6 @@ include Test::Unit::Assertions
 require 'http'
 
 require 'rspec'
+
+### Require pry gem for debugging purposes
+require 'pry'
