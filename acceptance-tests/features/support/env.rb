@@ -4,18 +4,23 @@
 ### need to change every test when switching environments for example.       ###
 ################################################################################
 
-$CHARGES_URL = (
-  ENV['CONVEYANCER_FE_URL'] || 'http://conveyancer-frontend.dev.service.gov.uk'
-)
+### These are the environment variables for the various services
+class Env
+  def self.borrower_frontend
+    (ENV['BORROWER_FRONTEND_URL'] ||
+        'http://borrower-frontend.dev.service.gov.uk')
+  end
 
-$CASE_API_URL = (
-  ENV['CASE_API_URL'] || 'http://case-api.dev.service.gov.uk'
-)
+  def self.conveyancer_frontend
+    (ENV['CONVEYANCER_FRONTEND_URL'] ||
+        'http://conveyancer-frontend.dev.service.gov.uk')
+  end
 
-$BORROWER_FRONTEND_URL = (
-  ENV['BORROWER_FRONTEND_URL'] || 'http://borrower-frontend.dev.service.gov.uk'
-)
+  def self.deed_api
+    (ENV['DEED_API_URL'] || 'http://deedapi.dev.service.gov.uk')
+  end
 
-$DEED_API_URL = (
-  ENV['DEED_API_URL'] || 'http://deedapi.dev.service.gov.uk'
-)
+  def self.case_api
+    (ENV['CASE_API_URL'] || 'http://case-api.dev.service.gov.uk')
+  end
+end

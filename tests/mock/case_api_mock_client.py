@@ -10,6 +10,7 @@ class CaseApiMockClient(CaseApi):
         cases = [
             {
                 "status": "Case created",
+                "case_id": "1",
                 "borrowers": [
                     {
                         "email_address": "adds@a.pp",
