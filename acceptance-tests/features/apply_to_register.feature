@@ -1,4 +1,4 @@
-@US07
+@US07 @apply_to_register
 
 Feature: Conveyancer applys to register
   As a Lender/Conveyancer

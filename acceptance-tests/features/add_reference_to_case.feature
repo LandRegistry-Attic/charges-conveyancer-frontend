@@ -1,4 +1,4 @@
-@add_ref_to_case
+@US81 @add_ref_to_case
 
 Feature: Add Reference to Case
   As a conveyancer who has many cases to track I need to be able to mark a case

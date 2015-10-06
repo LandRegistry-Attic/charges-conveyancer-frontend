@@ -1,4 +1,4 @@
-@add_title_number_to_a_case
+@US22 @add_title_number_to_a_case
 
 Feature: Add Title Number to Case
   As a Conveyancer/lender

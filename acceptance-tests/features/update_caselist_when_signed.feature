@@ -1,4 +1,4 @@
-@update_caselist_when_signed
+@US63 @update_caselist_when_signed
 
 Feature: Caselist is updated only when all borrowers have signed
     As a Lender/Conveyancer

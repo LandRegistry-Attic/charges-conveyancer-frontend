@@ -1,4 +1,4 @@
-@make_deed_effective
+@US10 @make_deed_effective
 
 Feature: Make Deed Effective
     As a Conveyancer I want to be able to make a deed effective
