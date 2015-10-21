@@ -1,3 +1,6 @@
+#!/bin/bash -l
+export PATH=$PATH:/usr/local/bin
+
 #################################################################################################
 ### This shell script is used to run style guide checkers on code in the acceptance-tests     ###
 ### folder such as Rubocop.                                                                   ###

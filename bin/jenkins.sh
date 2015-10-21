@@ -1,4 +1,5 @@
-#! /usr/bin/env bash
+#!/bin/bash -l
+export PATH=$PATH:/usr/local/bin
 
 env_dir="$JENKINS_HOME/virtualenv/${JOB_NAME// /_}"
 
